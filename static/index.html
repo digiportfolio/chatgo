@@ -687,8 +687,14 @@
     <script>
         // Configuration
         const USE_STREAMING = true;
-        const API_URL_STREAM = "http://localhost:8000/chat-stream";
-        const API_URL_NORMAL = "http://localhost:8000/chat";
+
+        // Auto-detect environment (localhost vs production)
+        const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:8000'
+            : `https://${window.location.hostname}`;
+
+        const API_URL_STREAM = `${BASE_URL}/chat-stream`;
+        const API_URL_NORMAL = `${BASE_URL}/chat`;
 
         // DOM Elements
         const messagesDiv = document.getElementById('messages');
