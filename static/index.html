@@ -195,13 +195,20 @@
         }
 
         body.dark pre {
-            background: #0a0a0f;
+            background: #0d0d1a;
+            border: 1px solid #2d2d44;
         }
 
         body.dark code {
-            background: #0a0a0f;
-            color: #cbd5e1;
+            background: #0d0d1a;
+            color: #e4e4e7;
         }
+
+        body.dark .token-comment { color: #6a9955; }
+        body.dark .token-string { color: #ce9178; }
+        body.dark .token-keyword { color: #569cd6; }
+        body.dark .token-function { color: #dcdcaa; }
+        body.dark .token-number { color: #b5cea8; }
 
         /* Area pesan - Fleksibel */
         .messages {
@@ -357,14 +364,14 @@
             gap: 10px;
             align-items: center;
             flex-shrink: 0;
-            margin-bottom: 50px; /* posisi vertikal input area dan tombol kirim */
+            margin-bottom: 0px;
         }
 
         /* Pada mobile, posisikan lebih ke atas */
         @media (max-width: 480px) {
             .input-area {
                 padding: 10px 16px 12px 16px;
-                margin-bottom: 50px;
+                margin-bottom: 0px;
             }
         }
 
@@ -443,45 +450,81 @@
             cursor: not-allowed;
         }
 
-        /* Styling untuk kode */
+        /* Styling untuk kode - Enhanced Code Highlighting */
         pre {
             background: #1e293b;
-            color: #f1f5f9;
-            padding: 12px;
+            color: #e2e8f0;
+            padding: 14px;
             border-radius: 12px;
             overflow-x: auto;
-            margin: 10px 0;
-            font-family: 'Courier New', 'SF Mono', monospace;
-            font-size: 12px;
-            line-height: 1.5;
+            margin: 12px 0;
+            font-family: 'Courier New', 'SF Mono', 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            tab-size: 4;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border: 1px solid #334155;
         }
 
         @media (min-width: 768px) {
             pre {
-                font-size: 13px;
-                padding: 14px;
+                font-size: 14px;
+                padding: 16px;
             }
         }
 
         code {
-            font-family: 'Courier New', 'SF Mono', monospace;
+            font-family: 'Courier New', 'SF Mono', 'Fira Code', monospace;
             background: #e2e8f0;
-            padding: 3px 7px;
-            border-radius: 8px;
-            font-size: 0.9em;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            color: #d14;
         }
 
-        body.dark code {
-            background: #0f172a;
-            color: #cbd5e1;
+        /* Inline code dalam pesan AI */
+        .message.ai code {
+            background: #f1f5f9;
+            color: #e11d48;
+            font-weight: 500;
         }
+
+        body.dark .message.ai code {
+            background: #2d2d44;
+            color: #f87171;
+        }
+
+        /* Syntax highlighting untuk kode di dalam pre */
+        .message.ai pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            font-weight: normal;
+        }
+
+        /* Highlight untuk keyword dalam kode */
+        .keyword { color: #c678dd; font-weight: 600; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        .comment { color: #5c6370; font-style: italic; }
+        .function { color: #61afef; }
+        .variable { color: #e06c75; }
+        .operator { color: #56b6c2; }
+
+        body.dark .keyword { color: #c678dd; }
+        body.dark .string { color: #98c379; }
+        body.dark .number { color: #d19a66; }
+        body.dark .comment { color: #7f848e; }
+        body.dark .function { color: #61afef; }
+        body.dark .variable { color: #e06c75; }
 
         .html-tag {
-            color: #facc15;
+            color: #e06c75;
         }
 
         .html-attribute {
-            color: #7aa2f7;
+            color: #d19a66;
         }
 
         /* Scrollbar modern */
@@ -766,21 +809,53 @@
             return div.innerHTML;
         }
 
+        // Simple syntax highlighting untuk kode
+        function highlightCode(code, language = 'python') {
+            let highlighted = code;
+            // Highlight keywords
+            const keywords = ['def', 'class', 'if', 'else', 'elif', 'for', 'while', 'return', 'import', 'from', 'as', 'try', 'except', 'finally', 'with', 'lambda', 'yield', 'async', 'await', 'True', 'False', 'None', 'and', 'or', 'not', 'in', 'is'];
+            keywords.forEach(keyword => {
+                const regex = new RegExp(`\\b${keyword}\\b`, 'g');
+                highlighted = highlighted.replace(regex, `<span class="keyword">${keyword}</span>`);
+            });
+            // Highlight strings
+            highlighted = highlighted.replace(/(['"])(.*?)\1/g, `<span class="string">$1$2$1</span>`);
+            // Highlight numbers
+            highlighted = highlighted.replace(/\b(\d+)\b/g, `<span class="number">$1</span>`);
+            // Highlight comments
+            highlighted = highlighted.replace(/(#.*$)/gm, `<span class="comment">$1</span>`);
+            // Highlight functions
+            highlighted = highlighted.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*\(/g, `<span class="function">$1</span>(`);
+            
+            return highlighted;
+        }
+
         function formatMessage(text) {
             let formattedText = escapeHtml(text);
             
+            // Process code blocks dengan syntax highlighting
             formattedText = formattedText.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-                return `<pre><code class="language-${lang || 'html'}">${code}</code></pre>`;
+                const language = lang || 'python';
+                const highlightedCode = highlightCode(code, language);
+                return `<pre><code class="language-${language}">${highlightedCode}</code></pre>`;
             });
             
+            // Process inline code
             formattedText = formattedText.replace(/`([^`]+)`/g, (match, code) => {
-                return `<code>${code}</code>`;
+                const highlightedInline = highlightCode(code);
+                return `<code>${highlightedInline}</code>`;
             });
             
+            // Process bold
             formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Process italic
             formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Process newlines
             formattedText = formattedText.replace(/\n/g, '<br>');
             
+            // Highlight HTML tags
             formattedText = formattedText.replace(/&lt;(\/?)(\w+)([^&]*?)&gt;/g, (match, slash, tagName, attrs) => {
                 return `<span class="html-tag">&lt;${slash}${tagName}${attrs}&gt;</span>`;
             });
@@ -1074,7 +1149,7 @@
         loadDarkMode();
         userInput.focus();
         
-        console.log('✅ ChatGO responsif dengan tombol salin di luar bubble dan modal konfirmasi tengah layar siap digunakan!');
+        console.log('✅ ChatGO dengan enhanced code highlighting siap digunakan!');
     </script>
 </body>
 </html>
