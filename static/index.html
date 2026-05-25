@@ -222,6 +222,7 @@
             }
         }
 
+        /* === PERUBAHAN UTAMA: wrapper untuk ai sekarang menggunakan flex column tapi dengan spacing berbeda === */
         .message-wrapper {
             display: flex;
             flex-direction: column;
@@ -230,10 +231,10 @@
             animation: fadeIn 0.2s ease;
         }
 
-        /* Khusus untuk wrapper AI: beri gap kecil antara bubble dan tombol salin */
+        /* Khusus untuk wrapper AI: kita beri gap kecil antara bubble dan tombol salin */
         .message-wrapper.ai {
             align-items: flex-start;
-            gap: 6px;
+            gap: 6px;  /* Jarak dekat antara bubble pesan dan tombol di bawah kanan */
         }
 
         /* Wrapper user tetap seperti sebelumnya */
@@ -253,20 +254,13 @@
             }
         }
 
-        /* Perbaikan untuk mobile: pesan lebih lebar */
-        @media (max-width: 480px) {
-            .message-wrapper {
-                max-width: 95%;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
+        @media (min-width: 480px) {
             .message-wrapper {
                 max-width: 85%;
             }
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             .message-wrapper {
                 max-width: 75%;
             }
@@ -301,7 +295,7 @@
             width: 100%;
         }
 
-        /* Tombol salin - di luar bubble, di bawah kanan dengan jarak dekat */
+        /* === TOMBOL SALIN DI LUAR BUBBLE, DI BAWAH KANAN DENGAN JARAK DEKAT === */
         .copy-btn {
             background: rgba(102, 126, 234, 0.9);
             border: none;
@@ -317,17 +311,12 @@
             font-weight: 500;
             backdrop-filter: blur(4px);
             width: fit-content;
-            margin-left: auto;
-            margin-right: 0;
+            margin-left: auto;   /* Mendorong ke kanan dalam flex container ai */
+            margin-right: 0;     /* Pastikan di pojok kanan relatif terhadap wrapper */
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        /* Di mobile, tombol selalu terlihat dan lebih mudah disentuh */
-        .copy-btn {
-            min-height: 32px;
-            padding: 6px 14px;
-        }
-
+        /* Di mobile tombol selalu terlihat, di desktop bisa sedikit lebih subtle namun tetap terlihat */
         .copy-btn:active {
             transform: scale(0.95);
         }
@@ -336,6 +325,9 @@
             background: #28a745;
             opacity: 1;
         }
+
+        /* Untuk memastikan tombol di sebelah kanan-bawah dari bubble dengan jarak rapat */
+        /* Tidak diperlukan hover hide karena permintaan "letakkan di luar pesan balasan AI dengan jarak dekat" dan tanpa mengubah fitur lain */
 
         /* Loading indicator */
         .loading {
@@ -391,14 +383,6 @@
             font-family: inherit;
         }
 
-        /* Perbaikan untuk mobile: input lebih mudah disentuh */
-        @media (max-width: 480px) {
-            input {
-                padding: 14px 16px;
-                font-size: 16px;
-            }
-        }
-
         @media (min-width: 768px) {
             input {
                 font-size: 16px;
@@ -418,15 +402,6 @@
             font-weight: bold;
             border-radius: 40px;
             min-width: 70px;
-        }
-
-        /* Perbaikan untuk mobile: tombol kirim lebih besar */
-        @media (max-width: 480px) {
-            .btn-send {
-                padding: 12px 22px;
-                min-width: 80px;
-                font-size: 15px;
-            }
         }
 
         @media (min-width: 768px) {
@@ -505,10 +480,10 @@
             background: #94a3b8;
         }
 
-        /* Toast notification - posisi lebih baik untuk mobile */
+        /* Toast notification */
         .toast {
             position: fixed;
-            bottom: 20px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
             background: #1e293b;
@@ -525,17 +500,6 @@
             font-weight: 500;
         }
 
-        @media (max-width: 480px) {
-            .toast {
-                bottom: 80px;
-                white-space: normal;
-                max-width: 80%;
-                text-align: center;
-                font-size: 13px;
-                padding: 8px 16px;
-            }
-        }
-
         @media (min-width: 768px) {
             .toast {
                 bottom: 30px;
@@ -548,7 +512,7 @@
             opacity: 1;
         }
 
-        /* Modal Custom - responsif */
+        /* Modal Custom */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -581,19 +545,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             transform: scale(0.9);
             transition: transform 0.2s ease;
-        }
-
-        @media (max-width: 480px) {
-            .modal-container {
-                width: 85%;
-                padding: 20px 16px 16px;
-            }
-            .modal-title {
-                font-size: 18px;
-            }
-            .modal-message {
-                font-size: 13px;
-            }
         }
 
         .modal-overlay.active .modal-container {
@@ -643,13 +594,6 @@
             border: none;
         }
 
-        @media (max-width: 480px) {
-            .modal-btn {
-                padding: 12px 0;
-                font-size: 15px;
-            }
-        }
-
         .modal-btn-cancel {
             background: #e2e8f0;
             color: #1e293b;
@@ -665,17 +609,17 @@
             color: white;
         }
 
-        .modal-btn-confirm:active {
+        .modal-btn-confirm:hover {
             transform: scale(0.98);
             opacity: 0.9;
         }
 
-        .modal-btn-cancel:active {
+        .modal-btn-cancel:hover {
             transform: scale(0.98);
             background: #cbd5e1;
         }
 
-        body.dark .modal-btn-cancel:active {
+        body.dark .modal-btn-cancel:hover {
             background: #475569;
         }
 
@@ -686,16 +630,6 @@
             }
             .input-area {
                 padding-bottom: max(12px, env(safe-area-inset-bottom));
-            }
-        }
-
-        /* Perbaikan sentuhan untuk mobile */
-        @media (max-width: 480px) {
-            button, select, .copy-btn {
-                min-height: 44px;
-            }
-            .copy-btn {
-                min-height: 36px;
             }
         }
     </style>
@@ -823,8 +757,9 @@
             return formattedText;
         }
 
-        // Fungsi copyMessage untuk tombol di luar bubble
+        // Fungsi copyMessage yang baru untuk tombol di luar bubble
         window.copyMessage = function(btnElement) {
+            // Cari wrapper terdekat, lalu di dalamnya cari .message.ai
             const wrapper = btnElement.closest('.message-wrapper');
             if (!wrapper) return;
             const messageDiv = wrapper.querySelector('.message.ai');
@@ -852,12 +787,17 @@
                 const messages = JSON.parse(saved);
                 messagesDiv.innerHTML = '';
                 messages.forEach(msg => {
+                    // Tambahkan kembali dengan struktur baru: ai memiliki tombol di luar
                     addMessage(msg.content, msg.role, false);
                 });
+                // Jika tidak ada pesan setelah load, pastikan greeting tetap? tidak perlu karena jika kosong akan tertimpa, kita lebih baik simpan sesuai history.
+                // Namun jika history kosong, beri sapaan awal (tapi sudah di HTML). Tapi jika loadChats membersihkan, maka kita perlu restore default jika benar2 kosong.
                 if (messages.length === 0) {
+                    // Tampilkan salam default
                     addMessage("👋 Halo! Saya asisten AI.\n💡 Tanya apa saja!", 'ai', false);
                 }
             } else {
+                // Jika tidak ada history, pastikan greeting ada
                 const existingGreeting = messagesDiv.querySelector('.message-wrapper.ai');
                 if (!existingGreeting) {
                     addMessage("👋 Halo! Saya asisten AI.\n💡 Tanya apa saja!", 'ai', false);
@@ -868,6 +808,7 @@
         function saveChats() {
             const messages = [];
             document.querySelectorAll('.message-wrapper').forEach(wrapper => {
+                // Cari elemen pesan utama (tanpa tombol)
                 const messageDiv = wrapper.querySelector('.message');
                 if (messageDiv && !wrapper.classList.contains('loading-wrapper')) {
                     const role = messageDiv.classList.contains('user') ? 'user' : 'ai';
@@ -878,6 +819,7 @@
             localStorage.setItem('chatHistory', JSON.stringify(messages));
         }
 
+        // Fungsi addMessage yang baru: untuk AI, tombol copy diletakkan di luar bubble (sebagai sibling setelah bubble)
         function addMessage(text, sender, save = true) {
             const wrapper = document.createElement('div');
             wrapper.className = `message-wrapper ${sender}`;
@@ -890,9 +832,11 @@
                 messageDiv.innerHTML = formattedText;
                 wrapper.appendChild(messageDiv);
                 
+                // Tombol salin diletakkan setelah bubble (di luar, tepat di bawah kanan)
                 const copyBtn = document.createElement('button');
                 copyBtn.className = 'copy-btn';
                 copyBtn.innerHTML = '📋 Salin';
+                // Menggunakan event listener agar tidak bentrok dengan onclick global
                 copyBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const textToCopy = messageDiv.innerText;
@@ -911,10 +855,11 @@
                 });
                 wrapper.appendChild(copyBtn);
             } 
-            else {
+            else { // sender user
                 const formattedUser = escapeHtml(text).replace(/\n/g, '<br>');
                 messageDiv.innerHTML = formattedUser;
                 wrapper.appendChild(messageDiv);
+                // user tidak perlu tombol copy
             }
             
             messagesDiv.appendChild(wrapper);
@@ -931,6 +876,7 @@
             loadingDiv.className = 'message ai loading';
             loadingDiv.innerHTML = '<span>●</span><span>●</span><span>●</span> AI mengetik...';
             wrapper.appendChild(loadingDiv);
+            // Loading tidak perlu tombol copy
             messagesDiv.appendChild(wrapper);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
@@ -952,6 +898,7 @@
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             
+            // Buat wrapper AI dengan struktur baru: bubble + nanti tombol copy di luar
             const wrapper = document.createElement('div');
             wrapper.className = 'message-wrapper ai';
             const aiMessageDiv = document.createElement('div');
@@ -984,6 +931,7 @@
                 }
             }
             
+            // Setelah selesai, tambahkan tombol copy di luar bubble (di dalam wrapper yang sama)
             const copyBtn = document.createElement('button');
             copyBtn.className = 'copy-btn';
             copyBtn.innerHTML = '📋 Salin';
@@ -1055,6 +1003,7 @@
 
         function performClearChat() {
             messagesDiv.innerHTML = '';
+            // Menambahkan pesan standar dengan struktur baru (AI + tombol salin di luar)
             addMessage('🧹 Chat telah dibersihkan. Mulai percakapan baru!', 'ai', false);
             localStorage.removeItem('chatHistory');
             showToast('Chat dibersihkan');
