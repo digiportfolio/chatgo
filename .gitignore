@@ -1,0 +1,46 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables (PENTING! Jangan commit API key)
+.env
+.env.local
+.env.*.local
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs dan database
+*.log
+*.sqlite
+*.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Deployment
+dist/
+build/
+*.egg-info/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
