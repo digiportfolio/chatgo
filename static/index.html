@@ -555,7 +555,7 @@
             background: #94a3b8;
         }
 
-        /* Toast notification */
+        /* Toast notification - masih digunakan untuk error, tapi tidak untuk sukses salin */
         .toast {
             position: fixed;
             bottom: 80px;
@@ -926,7 +926,7 @@
             return formattedText;
         }
 
-        // Fungsi copyMessage untuk tombol di luar bubble
+        // Fungsi copyMessage untuk tombol di luar bubble - TANPA TOAST NOTIFICATION, hanya perubahan tombol
         window.copyMessage = function(btnElement) {
             const wrapper = btnElement.closest('.message-wrapper');
             if (!wrapper) return;
@@ -938,7 +938,7 @@
                 const originalText = btnElement.innerHTML;
                 btnElement.innerHTML = '✓ Tersalin';
                 btnElement.classList.add('copied');
-                showToast('Pesan disalin!');
+                // Hapus panggilan showToast agar tidak muncul notifikasi "Pesan disalin!"
                 
                 setTimeout(() => {
                     btnElement.innerHTML = originalText;
@@ -1003,7 +1003,7 @@
                         const originalText = copyBtn.innerHTML;
                         copyBtn.innerHTML = '✓ Tersalin';
                         copyBtn.classList.add('copied');
-                        showToast('Pesan disalin!');
+                        // Tidak menampilkan toast notifikasi sukses
                         setTimeout(() => {
                             copyBtn.innerHTML = originalText;
                             copyBtn.classList.remove('copied');
@@ -1102,7 +1102,7 @@
                     const originalText = copyBtn.innerHTML;
                     copyBtn.innerHTML = '✓ Tersalin';
                     copyBtn.classList.add('copied');
-                    showToast('Pesan disalin!');
+                    // Tidak menampilkan toast notifikasi sukses
                     setTimeout(() => {
                         copyBtn.innerHTML = originalText;
                         copyBtn.classList.remove('copied');
