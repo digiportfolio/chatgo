@@ -1,4 +1,4 @@
-```markdown
+
 # 🚀 ChatGO - Free AI Assistant
 
 <p align="center">
@@ -394,4 +394,4 @@ in the Software without restriction...
   <b>Dibuat dengan ❤️ untuk portofolio Python Developer</b><br>
   <sub>© 2025 Fadli - MIT License</sub>
 </p>
-```
+
