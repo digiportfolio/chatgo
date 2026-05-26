@@ -1153,10 +1153,17 @@
         }
 
         function loadDarkMode() {
+            // Default ke mode terang (light mode) jika belum ada pengaturan tersimpan
             const isDark = localStorage.getItem('darkMode') === 'true';
             if (isDark) {
                 document.body.classList.add('dark');
                 darkModeBtn.textContent = '☀️';
+            } else {
+                // Memastikan mode terang aktif secara default
+                document.body.classList.remove('dark');
+                darkModeBtn.textContent = '🌙';
+                // Set storage ke false untuk konsistensi
+                localStorage.setItem('darkMode', 'false');
             }
         }
 
@@ -1194,11 +1201,11 @@
 
         // Inisialisasi
         loadChats();
-        loadDarkMode();
+        loadDarkMode();      // Memuat mode terang sebagai default
         resetModelSelect();   // Reset pilihan model ke placeholder setiap load/reload
         userInput.focus();
         
-        console.log('✅ ChatGO dengan enhanced code highlighting dan default model (Llama 3.3 70B) siap digunakan!');
+        console.log('✅ ChatGO dengan enhanced code highlighting dan default model (Llama 3.3 70B) siap digunakan! (Mode terang default)');
     </script>
 </body>
 </html>
