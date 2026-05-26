@@ -30,7 +30,6 @@
   <tr>
     <td align="center"><strong>Light Mode</strong></td>
     <td align="center"><strong>Dark Mode</strong></td>
-    <td align="center"><strong>Mobile View</strong></td>
   </tr>
   <tr>
     <td><img src="readme_images/light mode.jpeg" width="250"></td>
