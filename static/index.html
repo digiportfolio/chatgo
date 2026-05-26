@@ -22,7 +22,6 @@
             padding: 0;
             margin: 0;
             width: 100%;
-            /* Mencegah scroll pada body di mobile */
             overflow: hidden;
             position: fixed;
             top: 0;
@@ -31,7 +30,6 @@
             bottom: 0;
         }
 
-        /* Pada desktop, body tidak fixed agar bisa menyesuaikan */
         @media (min-width: 768px) {
             body {
                 position: relative;
@@ -50,7 +48,6 @@
             border-radius: 0;
         }
 
-        /* Tablet & Desktop - Mengatur batas maksimal dan posisi agar fit di layar */
         @media (min-width: 768px) {
             body {
                 padding: 20px;
@@ -76,7 +73,6 @@
             }
         }
 
-        /* Header - Mobile first */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -169,7 +165,6 @@
             transform: scale(0.98);
         }
 
-        /* Dark mode */
         body.dark .chat-app {
             background: #0f0f1a;
         }
@@ -229,7 +224,6 @@
         body.dark .token-function { color: #dcdcaa; }
         body.dark .token-number { color: #b5cea8; }
 
-        /* Area pesan - Fleksibel, ini satu-satunya area yang bisa di-scroll */
         .messages {
             flex: 1;
             overflow-y: auto;
@@ -248,6 +242,68 @@
             }
         }
 
+        /* Scroll to bottom button (arrow down) */
+        .scroll-down-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 90px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            transition: all 0.2s ease;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+            transition: opacity 0.25s ease, transform 0.2s ease, visibility 0s linear 0.25s;
+            font-size: 24px;
+            backdrop-filter: blur(4px);
+        }
+
+        .scroll-down-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            transition: opacity 0.25s ease, transform 0.2s ease, visibility 0s linear 0s;
+        }
+
+        .scroll-down-btn:active {
+            transform: scale(0.92);
+        }
+
+        body.dark .scroll-down-btn {
+            background: linear-gradient(135deg, #4a6fa5 0%, #5e3a8c 100%);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .scroll-down-btn {
+                bottom: 100px;
+                right: 28px;
+                width: 54px;
+                height: 54px;
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroll-down-btn {
+                right: 16px;
+                bottom: 80px;
+                width: 46px;
+                height: 46px;
+                font-size: 22px;
+            }
+        }
+
         .message-wrapper {
             display: flex;
             flex-direction: column;
@@ -256,13 +312,11 @@
             animation: fadeIn 0.2s ease;
         }
 
-        /* Khusus untuk wrapper AI: beri gap kecil antara bubble dan tombol salin */
         .message-wrapper.ai {
             align-items: flex-start;
             gap: 6px;
         }
 
-        /* Wrapper user tetap seperti sebelumnya */
         .message-wrapper.user {
             align-self: flex-end;
             align-items: flex-end;
@@ -320,7 +374,6 @@
             width: 100%;
         }
 
-        /* Tombol salin di luar bubble */
         .copy-btn {
             background: rgba(102, 126, 234, 0.9);
             border: none;
@@ -350,7 +403,6 @@
             opacity: 1;
         }
 
-        /* Loading indicator */
         .loading {
             background: white;
             color: #64748b;
@@ -374,7 +426,6 @@
             50% { opacity: 1; transform: scale(1.2);}
         }
 
-        /* Input area - Mobile friendly, tetap terlihat dan tidak tersembunyi */
         .input-area {
             padding: 12px 16px;
             border-top: 1px solid #e2e8f0;
@@ -384,11 +435,10 @@
             align-items: center;
             flex-shrink: 0;
             margin-bottom: 70px;
-            /* Pastikan input area selalu terlihat */
             min-height: 60px;
+            position: relative;
         }
 
-        /* Reset margin bottom untuk tablet dan desktop */
         @media (min-width: 768px) {
             .input-area {
                 margin-bottom: 0;
@@ -409,7 +459,6 @@
             font-family: inherit;
         }
 
-        /* Pada mobile, pastikan input cukup besar untuk disentuh */
         @media (max-width: 480px) {
             input {
                 padding: 12px 14px;
@@ -434,7 +483,6 @@
             transition: all 0.2s ease;
         }
 
-        /* Pada mobile, ukuran tombol tetap nyaman disentuh */
         @media (max-width: 480px) {
             .btn-send {
                 padding: 12px 18px;
@@ -460,7 +508,6 @@
             cursor: not-allowed;
         }
 
-        /* Styling untuk kode - Enhanced Code Highlighting */
         pre {
             background: #1e293b;
             color: #e2e8f0;
@@ -493,7 +540,6 @@
             color: #d14;
         }
 
-        /* Inline code dalam pesan AI */
         .message.ai code {
             background: #f1f5f9;
             color: #e11d48;
@@ -505,7 +551,6 @@
             color: #f87171;
         }
 
-        /* Syntax highlighting untuk kode di dalam pre */
         .message.ai pre code {
             background: transparent;
             padding: 0;
@@ -513,7 +558,6 @@
             font-weight: normal;
         }
 
-        /* Highlight untuk keyword dalam kode */
         .keyword { color: #c678dd; font-weight: 600; }
         .string { color: #98c379; }
         .number { color: #d19a66; }
@@ -537,7 +581,6 @@
             color: #d19a66;
         }
 
-        /* Scrollbar modern */
         .messages::-webkit-scrollbar {
             width: 5px;
         }
@@ -555,7 +598,6 @@
             background: #94a3b8;
         }
 
-        /* Toast notification - masih digunakan untuk error, tapi tidak untuk sukses salin */
         .toast {
             position: fixed;
             bottom: 80px;
@@ -596,7 +638,6 @@
             opacity: 1;
         }
 
-        /* Modal Custom */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -707,7 +748,6 @@
             background: #475569;
         }
 
-        /* Safe area untuk notch */
         @supports (padding: max(0px)) {
             .header {
                 padding-top: max(16px, env(safe-area-inset-top));
@@ -716,9 +756,13 @@
                 padding-bottom: max(12px, env(safe-area-inset-bottom));
             }
         }
+
+        /* make chat-app relative for absolute positioned scroll button */
+        .chat-app {
+            position: relative;
+        }
     </style>
 
-    <!-- Open Graph / Social Media -->
     <meta property="og:title" content="ChatGO | AI Chatbot">
     <meta property="og:description" content="Asisten AI cerdas dengan berbagai model. Chat langsung di browser!">
     <meta property="og:image" content="https://chatgo.up.railway.app/chatgo.png">
@@ -727,13 +771,11 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chatgo.up.railway.app/">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ChatGO | AI Chatbot">
     <meta name="twitter:description" content="Asisten AI cerdas dengan berbagai model. Chat langsung di browser!">
     <meta name="twitter:image" content="https://chatgo.up.railway.app/chatgo.png">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="chatgo.png">
     <link rel="shortcut icon" href="chatgo.png">
 </head>
@@ -771,11 +813,13 @@
             <input type="text" id="userInput" placeholder="Ketik pesan..." />
             <button class="btn-send" id="sendBtn">Kirim</button>
         </div>
+
+        <!-- Scroll to bottom button (arrow down) -->
+        <button class="scroll-down-btn" id="scrollDownBtn" aria-label="Gulir ke bawah">⬇️</button>
     </div>
 
     <div class="toast" id="toast">✅ Tersalin!</div>
 
-    <!-- Modal Custom -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-container">
             <div class="modal-icon">🗑️</div>
@@ -789,10 +833,8 @@
     </div>
 
     <script>
-        // Configuration
         const USE_STREAMING = true;
 
-        // Auto-detect environment (localhost vs production)
         const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
             ? 'http://localhost:8000'
             : `https://${window.location.hostname}`;
@@ -800,7 +842,6 @@
         const API_URL_STREAM = `${BASE_URL}/chat-stream`;
         const API_URL_NORMAL = `${BASE_URL}/chat`;
 
-        // DOM Elements
         const messagesDiv = document.getElementById('messages');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
@@ -808,47 +849,81 @@
         const darkModeBtn = document.getElementById('darkModeBtn');
         const modelSelect = document.getElementById('modelSelect');
         const toast = document.getElementById('toast');
+        const scrollDownBtn = document.getElementById('scrollDownBtn');
 
-        // Modal Elements
         const modalOverlay = document.getElementById('modalOverlay');
         const modalCancelBtn = document.getElementById('modalCancelBtn');
         const modalConfirmBtn = document.getElementById('modalConfirmBtn');
 
-        // Default model (Llama 3.3 70B)
         const DEFAULT_MODEL = 'llama-3.3-70b-versatile';
 
         let isWaiting = false;
-        let pendingClearAction = null;
 
-        // --- PENINGKATAN UX: Memastikan input area selalu terlihat di atas keyboard mobile ---
+        // SCROLL BUTTON LOGIC
+        function isUserNearBottom() {
+            const scrollTop = messagesDiv.scrollTop;
+            const scrollHeight = messagesDiv.scrollHeight;
+            const clientHeight = messagesDiv.clientHeight;
+            // Jika jarak dari bottom kurang dari 100px, dianggap dekat bawah
+            return scrollHeight - (scrollTop + clientHeight) < 100;
+        }
+
+        function updateScrollButtonVisibility() {
+            if (!messagesDiv) return;
+            const nearBottom = isUserNearBottom();
+            if (nearBottom) {
+                scrollDownBtn.classList.remove('show');
+            } else {
+                scrollDownBtn.classList.add('show');
+            }
+        }
+
+        function scrollToBottomSmooth() {
+            messagesDiv.scrollTo({
+                top: messagesDiv.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        // Event listener scroll manual
+        messagesDiv.addEventListener('scroll', () => {
+            updateScrollButtonVisibility();
+        });
+
+        // Tombol scroll ke bawah
+        scrollDownBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToBottomSmooth();
+            // setelah diklik, tombol akan segera disembunyikan (karena akan mendekati bottom)
+            setTimeout(() => {
+                updateScrollButtonVisibility();
+            }, 200);
+        });
+
+        // Override addMessage & stream scroll agar memicu pengecekan tombol
         function scrollInputIntoView() {
-            // Hanya berlaku untuk perangkat mobile (layar sentuh dan lebar maksimal 768px sebagai indikasi)
             const isMobile = window.matchMedia("(max-width: 768px) and (hover: none)").matches || 
                              (('ontouchstart' in window) && window.innerWidth <= 768);
             if (!isMobile) return;
 
-            // Beri sedikit jeda agar keyboard sempat muncul sebelum scrolling
             setTimeout(() => {
                 const inputArea = document.querySelector('.input-area');
                 if (inputArea) {
-                    // Gunakan scrollIntoView dengan perilaku halus, blok ke 'end' agar input area berada di bagian bawah viewport
                     inputArea.scrollIntoView({ behavior: 'smooth', block: 'end' });
                 }
-            }, 150); // Jeda kecil membantu beberapa browser mobile
+            }, 150);
         }
 
-        // Tambahkan event listener focus pada input untuk memicu scroll
         userInput.addEventListener('focus', () => {
             scrollInputIntoView();
         });
 
-        // Tambahkan juga untuk memastikan saat keyboard muncul setelah orientasi berubah atau resize
         window.addEventListener('resize', () => {
             if (document.activeElement === userInput) {
                 scrollInputIntoView();
             }
+            updateScrollButtonVisibility();
         });
-        // --- AKHIR PENINGKATAN UX ---
 
         function showToast(message, isError = false) {
             toast.textContent = isError ? `❌ ${message}` : `✅ ${message}`;
@@ -872,22 +947,21 @@
             return div.innerHTML;
         }
 
-        // Simple syntax highlighting untuk kode
         function highlightCode(code, language = 'python') {
             let highlighted = code;
-            // Highlight keywords
+            
             const keywords = ['def', 'class', 'if', 'else', 'elif', 'for', 'while', 'return', 'import', 'from', 'as', 'try', 'except', 'finally', 'with', 'lambda', 'yield', 'async', 'await', 'True', 'False', 'None', 'and', 'or', 'not', 'in', 'is'];
             keywords.forEach(keyword => {
                 const regex = new RegExp(`\\b${keyword}\\b`, 'g');
                 highlighted = highlighted.replace(regex, `<span class="keyword">${keyword}</span>`);
             });
-            // Highlight strings
+            
             highlighted = highlighted.replace(/(['"])(.*?)\1/g, `<span class="string">$1$2$1</span>`);
-            // Highlight numbers
+            
             highlighted = highlighted.replace(/\b(\d+)\b/g, `<span class="number">$1</span>`);
-            // Highlight comments
+            
             highlighted = highlighted.replace(/(#.*$)/gm, `<span class="comment">$1</span>`);
-            // Highlight functions
+            
             highlighted = highlighted.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*\(/g, `<span class="function">$1</span>(`);
             
             return highlighted;
@@ -896,29 +970,23 @@
         function formatMessage(text) {
             let formattedText = escapeHtml(text);
             
-            // Process code blocks dengan syntax highlighting
             formattedText = formattedText.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
                 const language = lang || 'python';
                 const highlightedCode = highlightCode(code, language);
                 return `<pre><code class="language-${language}">${highlightedCode}</code></pre>`;
             });
             
-            // Process inline code
             formattedText = formattedText.replace(/`([^`]+)`/g, (match, code) => {
                 const highlightedInline = highlightCode(code);
                 return `<code>${highlightedInline}</code>`;
             });
             
-            // Process bold
             formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
-            // Process italic
             formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
             
-            // Process newlines
             formattedText = formattedText.replace(/\n/g, '<br>');
             
-            // Highlight HTML tags
             formattedText = formattedText.replace(/&lt;(\/?)(\w+)([^&]*?)&gt;/g, (match, slash, tagName, attrs) => {
                 return `<span class="html-tag">&lt;${slash}${tagName}${attrs}&gt;</span>`;
             });
@@ -926,7 +994,6 @@
             return formattedText;
         }
 
-        // Fungsi copyMessage untuk tombol di luar bubble - TANPA TOAST NOTIFICATION, hanya perubahan tombol
         window.copyMessage = function(btnElement) {
             const wrapper = btnElement.closest('.message-wrapper');
             if (!wrapper) return;
@@ -938,7 +1005,6 @@
                 const originalText = btnElement.innerHTML;
                 btnElement.innerHTML = '✓ Tersalin';
                 btnElement.classList.add('copied');
-                // Hapus panggilan showToast agar tidak muncul notifikasi "Pesan disalin!"
                 
                 setTimeout(() => {
                     btnElement.innerHTML = originalText;
@@ -966,6 +1032,11 @@
                     addMessage("👋 Halo! Saya asisten AI.\n💡 Tanya apa saja!", 'ai', false);
                 }
             }
+            // setelah load, scroll ke bawah dan update tombol
+            setTimeout(() => {
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                updateScrollButtonVisibility();
+            }, 50);
         }
 
         function saveChats() {
@@ -1003,7 +1074,6 @@
                         const originalText = copyBtn.innerHTML;
                         copyBtn.innerHTML = '✓ Tersalin';
                         copyBtn.classList.add('copied');
-                        // Tidak menampilkan toast notifikasi sukses
                         setTimeout(() => {
                             copyBtn.innerHTML = originalText;
                             copyBtn.classList.remove('copied');
@@ -1023,6 +1093,7 @@
             messagesDiv.appendChild(wrapper);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
             if (save) saveChats();
+            updateScrollButtonVisibility(); 
             return wrapper;
         }
 
@@ -1036,14 +1107,15 @@
             wrapper.appendChild(loadingDiv);
             messagesDiv.appendChild(wrapper);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            updateScrollButtonVisibility();
         }
 
         function hideLoading() {
             const loadingWrapper = document.getElementById('loading-indicator-wrapper');
             if (loadingWrapper) loadingWrapper.remove();
+            updateScrollButtonVisibility();
         }
 
-        // Fungsi untuk mendapatkan model yang akan digunakan (default jika belum dipilih)
         function getSelectedModel() {
             return modelSelect.value || DEFAULT_MODEL;
         }
@@ -1086,6 +1158,7 @@
                                 fullResponse += parsed.content;
                                 aiMessageDiv.innerHTML = formatMessage(fullResponse);
                                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                                updateScrollButtonVisibility();
                             }
                         } catch (e) {}
                     }
@@ -1102,7 +1175,6 @@
                     const originalText = copyBtn.innerHTML;
                     copyBtn.innerHTML = '✓ Tersalin';
                     copyBtn.classList.add('copied');
-                    // Tidak menampilkan toast notifikasi sukses
                     setTimeout(() => {
                         copyBtn.innerHTML = originalText;
                         copyBtn.classList.remove('copied');
@@ -1113,6 +1185,7 @@
             });
             wrapper.appendChild(copyBtn);
             saveChats();
+            updateScrollButtonVisibility();
             return fullResponse;
         }
 
@@ -1126,6 +1199,7 @@
             const data = await response.json();
             if (data.error) throw new Error(data.error);
             addMessage(data.reply, 'ai');
+            updateScrollButtonVisibility();
             return data.reply;
         }
 
@@ -1158,8 +1232,8 @@
                 sendBtn.disabled = false;
                 userInput.disabled = false;
                 userInput.focus();
-                // Setelah mengirim, scroll input area ke view untuk memastikan tetap terlihat (di mobile)
                 scrollInputIntoView();
+                updateScrollButtonVisibility();
             }
         }
 
@@ -1168,6 +1242,10 @@
             addMessage('🧹 Chat telah dihapus. Mulai percakapan baru!', 'ai', false);
             localStorage.removeItem('chatHistory');
             showToast('Chat dihapus');
+            setTimeout(() => {
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                updateScrollButtonVisibility();
+            }, 30);
         }
 
         function clearChat() {
@@ -1226,7 +1304,12 @@
         resetModelSelect();
         userInput.focus();
         
-        console.log('✅ ChatGO dengan enhanced code highlighting dan default model (Llama 3.3 70B) siap digunakan!');
+        // initial visibility check
+        setTimeout(() => {
+            updateScrollButtonVisibility();
+        }, 100);
+        
+        console.log('✅ ChatGO dengan tombol scroll panah bawah siap digunakan!');
     </script>
 </body>
 </html>
