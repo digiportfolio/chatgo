@@ -12,6 +12,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* ===== DESKTOP-FRIENDLY LAYOUT ===== */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -19,43 +20,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            padding: 20px;
             margin: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
         }
 
         .chat-app {
             width: 100%;
-            height: 100%;
+            max-width: 1200px;
+            height: calc(100vh - 40px);
             background: white;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: none;
-            border-radius: 0;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
-        /* Tablet & Desktop */
-        @media (min-width: 768px) {
+        /* Untuk layar yang lebih kecil dari 768px, tetap fullscreen tanpa border-radius besar */
+        @media (max-width: 767px) {
             body {
-                padding: 20px;
-                position: relative;
-                height: 100vh;
+                padding: 0;
             }
+            .chat-app {
+                height: 100vh;
+                border-radius: 0;
+                max-width: 100%;
+            }
+        }
+
+        /* Tablet landscape */
+        @media (min-width: 768px) and (max-width: 1023px) {
             .chat-app {
                 max-width: 900px;
                 height: 90vh;
-                border-radius: 28px;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             }
         }
 
-        @media (min-width: 1024px) {
+        /* Desktop besar */
+        @media (min-width: 1600px) {
             .chat-app {
-                max-width: 1100px;
+                max-width: 1400px;
                 height: 85vh;
             }
         }
@@ -138,6 +142,9 @@
         select {
             cursor: pointer;
             background: rgba(255,255,255,0.2);
+            appearance: none;
+            -webkit-appearance: none;
+            text-align: center;
         }
 
         select option {
@@ -210,7 +217,7 @@
         body.dark .token-function { color: #dcdcaa; }
         body.dark .token-number { color: #b5cea8; }
 
-        /* Area pesan - Fleksibel */
+        /* Area pesan - Fleksibel, tidak overflow berlebihan */
         .messages {
             flex: 1;
             overflow-y: auto;
@@ -224,7 +231,7 @@
 
         @media (min-width: 768px) {
             .messages {
-                padding: 20px;
+                padding: 20px 24px;
                 gap: 16px;
             }
         }
@@ -232,7 +239,7 @@
         .message-wrapper {
             display: flex;
             flex-direction: column;
-            max-width: 90%;
+            max-width: 85%;
             position: relative;
             animation: fadeIn 0.2s ease;
         }
@@ -260,15 +267,15 @@
             }
         }
 
-        @media (min-width: 480px) {
-            .message-wrapper {
-                max-width: 85%;
-            }
-        }
-
         @media (min-width: 768px) {
             .message-wrapper {
                 max-width: 75%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .message-wrapper {
+                max-width: 70%;
             }
         }
 
@@ -355,7 +362,7 @@
             50% { opacity: 1; transform: scale(1.2);}
         }
 
-        /* Input area - Mobile friendly dengan posisi sedikit ke atas */
+        /* Input area - Desktop tetap proporsional */
         .input-area {
             padding: 12px 16px;
             border-top: 1px solid #e2e8f0;
@@ -364,22 +371,12 @@
             gap: 10px;
             align-items: center;
             flex-shrink: 0;
-            margin-bottom: 0px;
-        }
-
-        /* Pada mobile, posisikan lebih ke atas */
-        @media (max-width: 480px) {
-            .input-area {
-                padding: 10px 16px 12px 16px;
-                margin-bottom: 70px;
-            }
         }
 
         @media (min-width: 768px) {
             .input-area {
                 padding: 16px 24px;
                 gap: 12px;
-                margin-bottom: 0;
             }
         }
 
@@ -395,7 +392,6 @@
             font-family: inherit;
         }
 
-        /* Pada mobile, kurangi padding input */
         @media (max-width: 480px) {
             input {
                 padding: 10px 14px;
@@ -424,7 +420,6 @@
             min-width: 70px;
         }
 
-        /* Pada mobile, kurangi padding tombol kirim */
         @media (max-width: 480px) {
             .btn-send {
                 padding: 8px 18px;
@@ -548,7 +543,7 @@
         /* Toast notification */
         .toast {
             position: fixed;
-            bottom: 80px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             background: #1e293b;
@@ -717,6 +712,7 @@
             </h1>
             <div class="header-controls">
                 <select id="modelSelect">
+                    <option value="" disabled selected hidden>Pilih Model AI</option>
                     <option value="llama-3.3-70b-versatile">Llama 3.3 70B</option>
                     <option value="llama-3.1-70b-versatile">Llama 3.1 70B</option>
                     <option value="llama-3.1-8b-instant">Llama 3.1 8B</option>
@@ -783,6 +779,9 @@
         const modalOverlay = document.getElementById('modalOverlay');
         const modalCancelBtn = document.getElementById('modalCancelBtn');
         const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+
+        // Default model (Llama 3.3 70B)
+        const DEFAULT_MODEL = 'llama-3.3-70b-versatile';
 
         let isWaiting = false;
         let pendingClearAction = null;
@@ -980,6 +979,11 @@
             if (loadingWrapper) loadingWrapper.remove();
         }
 
+        // Fungsi untuk mendapatkan model yang akan digunakan (default jika belum dipilih)
+        function getSelectedModel() {
+            return modelSelect.value || DEFAULT_MODEL;
+        }
+
         async function sendMessageStream(message, model) {
             const response = await fetch(API_URL_STREAM, {
                 method: 'POST',
@@ -1071,7 +1075,7 @@
             sendBtn.disabled = true;
             userInput.disabled = true;
             
-            const model = modelSelect.value;
+            const model = getSelectedModel();
             
             try {
                 if (USE_STREAMING) {
@@ -1119,6 +1123,10 @@
             }
         }
 
+        function resetModelSelect() {
+            modelSelect.value = '';
+        }
+
         // Event listeners untuk modal
         modalCancelBtn.addEventListener('click', () => {
             hideModal();
@@ -1145,11 +1153,13 @@
             }
         });
 
+        // Inisialisasi
         loadChats();
         loadDarkMode();
+        resetModelSelect();
         userInput.focus();
         
-        console.log('✅ ChatGO dengan enhanced code highlighting siap digunakan!');
+        console.log('✅ ChatGO dengan enhanced code highlighting dan default model (Llama 3.3 70B) siap digunakan!');
     </script>
 </body>
 </html>
