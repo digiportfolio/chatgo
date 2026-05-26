@@ -46,6 +46,7 @@
             overflow: hidden;
             box-shadow: none;
             border-radius: 0;
+            position: relative;
         }
 
         @media (min-width: 768px) {
@@ -242,7 +243,7 @@
             }
         }
 
-        /* Scroll to bottom button (arrow down) */
+        /* Scroll to bottom button - diposisikan di atas input area, tidak menimpa tombol kirim */
         .scroll-down-btn {
             position: absolute;
             right: 20px;
@@ -250,29 +251,28 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             transition: all 0.2s ease;
-            z-index: 10;
+            z-index: 15;
             opacity: 0;
             visibility: hidden;
             transform: scale(0.8);
-            transition: opacity 0.25s ease, transform 0.2s ease, visibility 0s linear 0.25s;
-            font-size: 24px;
-            backdrop-filter: blur(4px);
+            font-size: 22px;
+            pointer-events: none;
         }
 
         .scroll-down-btn.show {
             opacity: 1;
             visibility: visible;
             transform: scale(1);
-            transition: opacity 0.25s ease, transform 0.2s ease, visibility 0s linear 0s;
+            pointer-events: auto;
         }
 
         .scroll-down-btn:active {
@@ -281,26 +281,26 @@
 
         body.dark .scroll-down-btn {
             background: linear-gradient(135deg, #4a6fa5 0%, #5e3a8c 100%);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         @media (min-width: 768px) {
             .scroll-down-btn {
-                bottom: 100px;
                 right: 28px;
-                width: 54px;
-                height: 54px;
-                font-size: 26px;
+                bottom: 100px;
+                width: 52px;
+                height: 52px;
+                font-size: 24px;
             }
         }
 
         @media (max-width: 480px) {
             .scroll-down-btn {
                 right: 16px;
-                bottom: 80px;
-                width: 46px;
-                height: 46px;
-                font-size: 22px;
+                bottom: 85px;
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
             }
         }
 
@@ -434,14 +434,13 @@
             gap: 10px;
             align-items: center;
             flex-shrink: 0;
-            margin-bottom: 70px;
             min-height: 60px;
             position: relative;
+            z-index: 10;
         }
 
         @media (min-width: 768px) {
             .input-area {
-                margin-bottom: 0;
                 padding: 16px 24px;
                 gap: 12px;
             }
@@ -756,11 +755,6 @@
                 padding-bottom: max(12px, env(safe-area-inset-bottom));
             }
         }
-
-        /* make chat-app relative for absolute positioned scroll button */
-        .chat-app {
-            position: relative;
-        }
     </style>
 
     <meta property="og:title" content="ChatGO | AI Chatbot">
@@ -814,7 +808,7 @@
             <button class="btn-send" id="sendBtn">Kirim</button>
         </div>
 
-        <!-- Scroll to bottom button (arrow down) -->
+        <!-- Tombol panah ke bawah - posisi di atas area input, tidak menimpa tombol kirim -->
         <button class="scroll-down-btn" id="scrollDownBtn" aria-label="Gulir ke bawah">⬇️</button>
     </div>
 
@@ -859,12 +853,10 @@
 
         let isWaiting = false;
 
-        // SCROLL BUTTON LOGIC
         function isUserNearBottom() {
             const scrollTop = messagesDiv.scrollTop;
             const scrollHeight = messagesDiv.scrollHeight;
             const clientHeight = messagesDiv.clientHeight;
-            // Jika jarak dari bottom kurang dari 100px, dianggap dekat bawah
             return scrollHeight - (scrollTop + clientHeight) < 100;
         }
 
@@ -885,22 +877,18 @@
             });
         }
 
-        // Event listener scroll manual
         messagesDiv.addEventListener('scroll', () => {
             updateScrollButtonVisibility();
         });
 
-        // Tombol scroll ke bawah
         scrollDownBtn.addEventListener('click', (e) => {
             e.preventDefault();
             scrollToBottomSmooth();
-            // setelah diklik, tombol akan segera disembunyikan (karena akan mendekati bottom)
             setTimeout(() => {
                 updateScrollButtonVisibility();
             }, 200);
         });
 
-        // Override addMessage & stream scroll agar memicu pengecekan tombol
         function scrollInputIntoView() {
             const isMobile = window.matchMedia("(max-width: 768px) and (hover: none)").matches || 
                              (('ontouchstart' in window) && window.innerWidth <= 768);
@@ -1032,7 +1020,6 @@
                     addMessage("👋 Halo! Saya asisten AI.\n💡 Tanya apa saja!", 'ai', false);
                 }
             }
-            // setelah load, scroll ke bawah dan update tombol
             setTimeout(() => {
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
                 updateScrollButtonVisibility();
@@ -1093,7 +1080,7 @@
             messagesDiv.appendChild(wrapper);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
             if (save) saveChats();
-            updateScrollButtonVisibility(); 
+            updateScrollButtonVisibility();
             return wrapper;
         }
 
@@ -1304,12 +1291,11 @@
         resetModelSelect();
         userInput.focus();
         
-        // initial visibility check
         setTimeout(() => {
             updateScrollButtonVisibility();
         }, 100);
         
-        console.log('✅ ChatGO dengan tombol scroll panah bawah siap digunakan!');
+        console.log('✅ ChatGO dengan tombol panah bawah (tidak menimpa tombol kirim) siap digunakan!');
     </script>
 </body>
 </html>
