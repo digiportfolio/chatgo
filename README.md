@@ -1,4 +1,3 @@
-
 # 🚀 ChatGO - AI Chatbot
 
 <p align="center">
@@ -26,17 +25,16 @@
 
 ## 📸 Demo
 
-<table>
+<table align="center">
   <tr>
     <td align="center"><strong>Light Mode</strong></td>
     <td align="center"><strong>Dark Mode</strong></td>
   </tr>
   <tr>
-    <td><img src="readme_images/light mode.jpeg" width="250"></td>
-    <td><img src="readme_images/dark mode.jpeg" width="250"></td>
+    <td align="center"><img src="readme_images/light mode.jpeg" width="250"></td>
+    <td align="center"><img src="readme_images/dark mode.jpeg" width="250"></td>
   </tr>
 </table>
-
 
 **[🔗 Live Demo - ChatGO di Railway](https://chatgo.up.railway.app)**
 
@@ -76,16 +74,10 @@
 
 ```mermaid
 graph LR
-    A[User Browser] --> B[HTML/CSS/JS (Frontend)]
-    B --> C[Python FastAPI (Backend)]
+    A[User Browser] --> B[HTML/CSS/JS Frontend]
+    B --> C[Python FastAPI Backend]
     C --> D[Groq API]
-    D --> E[Llama 3 / Gemma (AI Models)]
-    
-    style A fill:#667eea,stroke:#333,color:#fff
-    style B fill:#764ba2,stroke:#333,color:#fff
-    style C fill:#667eea,stroke:#333,color:#fff
-    style D fill:#764ba2,stroke:#333,color:#fff
-    style E fill:#667eea,stroke:#333,color:#fff
+    D --> E[Llama 3 / Gemma AI Models]
 ```
 
 | Lapisan | Teknologi | Keterangan |
@@ -108,10 +100,10 @@ chatgo/
 ├── .gitignore           # File yang diabaikan Git
 ├── static/
 │   └── index.html      # Frontend lengkap (HTML + CSS + JS)
-|   └── chatgo.png      # logo ChatGO (untuk favicon dan h1)
-|   readme_images/
-|   └── light mode.jpeg # Screenshot UI ChatGO (light mode)
-|   └── dark mode.jpeg  # Screenshot UI ChatGO (dark mode)
+│   └── chatgo.png      # logo ChatGO (untuk favicon dan h1)
+├── readme_images/
+│   └── light mode.jpeg # Screenshot UI ChatGO (light mode)
+│   └── dark mode.jpeg  # Screenshot UI ChatGO (dark mode)
 └── README.md           # Dokumentasi
 ```
 
@@ -394,4 +386,3 @@ in the Software without restriction...
   <b>Dibuat dengan ❤️ untuk portofolio Python Developer</b><br>
   <sub>© 2025 Fadli - MIT License</sub>
 </p>
-
