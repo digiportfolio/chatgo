@@ -33,8 +33,8 @@
     <td align="center"><strong>Mobile View</strong></td>
   </tr>
   <tr>
-    <td><img src="screenshots/light-mode.png" width="250"></td>
-    <td><img src="screenshots/dark-mode.png" width="250"></td>
+    <td><img src="readme_images/light mode.jpeg" width="250"></td>
+    <td><img src="readme_images/dark mode.jpeg" width="250"></td>
   </tr>
 </table>
 
