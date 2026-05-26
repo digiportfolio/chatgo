@@ -1,5 +1,5 @@
 
-# 🚀 ChatGO - Free AI Assistant
+# 🚀 ChatGO - AI Chatbot
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>Aplikasi chat AI gratis dengan streaming real-time, dark mode, dan syntax highlighting</strong><br>
+  <strong>Aplikasi chat AI dengan streaming real-time, dark mode, dan syntax highlighting</strong><br>
   Dibangun dengan Python FastAPI + Groq API + HTML/CSS/JS murni
 </p>
 
@@ -50,13 +50,13 @@
 | Fitur | Status | Deskripsi |
 |:------|:------:|:----------|
 | 💬 **Real-time Chat** | ✅ | Kirim pesan dan dapatkan respons instan dari AI |
-| 🎯 **Streaming Response** | ✅ | Teks muncul huruf per huruf seperti ChatGPT asli |
+| 🎯 **Streaming Response** | ✅ | Teks muncul huruf per huruf |
 | 🌙 **Dark Mode** | ✅ | Toggle antara mode terang dan gelap, tersimpan otomatis |
 | 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik (tombol di luar bubble) |
 | 💾 **Chat History** | ✅ | Percakapan tersimpan di localStorage browser |
-| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI gratis (Llama 3.3, Llama 3.1, Gemma 2) |
+| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI (Llama 3.3, Llama 3.1, Gemma 2) |
 | 📱 **Responsive Design** | ✅ | Bekerja sempurna di desktop, tablet, dan HP |
-| 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk Python, HTML, CSS, JavaScript |
+| 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk kode |
 | 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan konfirmasi modal |
 | ⚡ **Auto-detect API URL** | ✅ | Bisa jalan di localhost dan production tanpa config ulang |
 
@@ -71,7 +71,7 @@
 | ⚡ **Llama 3.1 8B** | `llama-3.1-8b-instant` | Sangat Cepat | ★★★☆☆ | Untuk respons cepat |
 | 🔬 **Gemma 2 9B** | `gemma2-9b-it` | Cepat | ★★★☆☆ | Model dari Google |
 
-> Semua model **100% GRATIS** via Groq Cloud API
+> Semua model via Groq Cloud API
 
 ---
 
@@ -95,9 +95,9 @@ graph LR
 |---------|-----------|-------------|
 | **Frontend** | HTML5 + CSS3 + Vanilla JS | Murni tanpa framework |
 | **Backend** | Python + FastAPI + Uvicorn | REST API dengan streaming SSE |
-| **AI Provider** | Groq Cloud API | 100% gratis, 30 request/menit |
+| **AI Provider** | Groq Cloud API | 30 request/menit |
 | **Storage** | LocalStorage (client-side) | History chat di browser |
-| **Deployment** | Railway / Render | Hosting gratis |
+| **Deployment** | Railway / Render | Hosting |
 
 ---
 
@@ -123,7 +123,7 @@ chatgo/
 | Requirement | Keterangan |
 |-------------|------------|
 | Python 3.8+ | [Download Python](https://python.org) |
-| Akun Groq | [Daftar gratis](https://console.groq.com) - tanpa kartu kredit |
+| Akun Groq | [Daftar](https://console.groq.com) - tanpa kartu kredit |
 | Git (opsional) | [Download Git](https://git-scm.com) |
 
 ### Langkah 1: Clone Repository
@@ -233,7 +233,6 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 ### 4. Multiple AI Models
 - Dropdown "Pilih Model AI" di header
 - **Default model: Llama 3.3 70B** (paling pintar)
-- Setiap model gratis dan cepat
 
 ### 5. Code Highlighting
 - Support Python, HTML, CSS, JavaScript, dan lainnya
@@ -370,11 +369,11 @@ in the Software without restriction...
 
 | Pihak | Kontribusi |
 |-------|------------|
-| **[Groq](https://groq.com)** | API gratis super cepat (Mixtral, Llama 3, Gemma) |
+| **[Groq](https://groq.com)** | API yang cepat (Mixtral, Llama 3, Gemma) |
 | **[FastAPI](https://fastapi.tiangolo.com)** | Framework backend modern Python |
 | **[Meta AI](https://ai.meta.com/llama/)** | Llama 3.3 & Llama 3.1 models |
 | **[Google](https://ai.google.dev/gemma)** | Gemma 2 model |
-| **[Railway](https://railway.app)** | Hosting gratis untuk deploy |
+| **[Railway](https://railway.app)** | Hosting |
 
 ---
 
