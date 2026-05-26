@@ -46,7 +46,6 @@
             overflow: hidden;
             box-shadow: none;
             border-radius: 0;
-            position: relative;
         }
 
         @media (min-width: 768px) {
@@ -243,67 +242,6 @@
             }
         }
 
-        /* Scroll to bottom button - diposisikan di atas input area, tidak menimpa tombol kirim */
-        .scroll-down-btn {
-            position: absolute;
-            right: 20px;
-            bottom: 90px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            transition: all 0.2s ease;
-            z-index: 15;
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.8);
-            font-size: 22px;
-            pointer-events: none;
-        }
-
-        .scroll-down-btn.show {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-            pointer-events: auto;
-        }
-
-        .scroll-down-btn:active {
-            transform: scale(0.92);
-        }
-
-        body.dark .scroll-down-btn {
-            background: linear-gradient(135deg, #4a6fa5 0%, #5e3a8c 100%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        @media (min-width: 768px) {
-            .scroll-down-btn {
-                right: 28px;
-                bottom: 100px;
-                width: 52px;
-                height: 52px;
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .scroll-down-btn {
-                right: 16px;
-                bottom: 85px;
-                width: 44px;
-                height: 44px;
-                font-size: 20px;
-            }
-        }
-
         .message-wrapper {
             display: flex;
             flex-direction: column;
@@ -434,13 +372,13 @@
             gap: 10px;
             align-items: center;
             flex-shrink: 0;
+            margin-bottom: 70px;
             min-height: 60px;
-            position: relative;
-            z-index: 10;
         }
 
         @media (min-width: 768px) {
             .input-area {
+                margin-bottom: 0;
                 padding: 16px 24px;
                 gap: 12px;
             }
@@ -807,9 +745,6 @@
             <input type="text" id="userInput" placeholder="Ketik pesan..." />
             <button class="btn-send" id="sendBtn">Kirim</button>
         </div>
-
-        <!-- Tombol panah ke bawah - posisi di atas area input, tidak menimpa tombol kirim -->
-        <button class="scroll-down-btn" id="scrollDownBtn" aria-label="Gulir ke bawah">⬇️</button>
     </div>
 
     <div class="toast" id="toast">✅ Tersalin!</div>
@@ -843,7 +778,6 @@
         const darkModeBtn = document.getElementById('darkModeBtn');
         const modelSelect = document.getElementById('modelSelect');
         const toast = document.getElementById('toast');
-        const scrollDownBtn = document.getElementById('scrollDownBtn');
 
         const modalOverlay = document.getElementById('modalOverlay');
         const modalCancelBtn = document.getElementById('modalCancelBtn');
@@ -852,42 +786,6 @@
         const DEFAULT_MODEL = 'llama-3.3-70b-versatile';
 
         let isWaiting = false;
-
-        function isUserNearBottom() {
-            const scrollTop = messagesDiv.scrollTop;
-            const scrollHeight = messagesDiv.scrollHeight;
-            const clientHeight = messagesDiv.clientHeight;
-            return scrollHeight - (scrollTop + clientHeight) < 100;
-        }
-
-        function updateScrollButtonVisibility() {
-            if (!messagesDiv) return;
-            const nearBottom = isUserNearBottom();
-            if (nearBottom) {
-                scrollDownBtn.classList.remove('show');
-            } else {
-                scrollDownBtn.classList.add('show');
-            }
-        }
-
-        function scrollToBottomSmooth() {
-            messagesDiv.scrollTo({
-                top: messagesDiv.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-
-        messagesDiv.addEventListener('scroll', () => {
-            updateScrollButtonVisibility();
-        });
-
-        scrollDownBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToBottomSmooth();
-            setTimeout(() => {
-                updateScrollButtonVisibility();
-            }, 200);
-        });
 
         function scrollInputIntoView() {
             const isMobile = window.matchMedia("(max-width: 768px) and (hover: none)").matches || 
@@ -910,7 +808,6 @@
             if (document.activeElement === userInput) {
                 scrollInputIntoView();
             }
-            updateScrollButtonVisibility();
         });
 
         function showToast(message, isError = false) {
@@ -1020,10 +917,6 @@
                     addMessage("👋 Halo! Saya asisten AI.\n💡 Tanya apa saja!", 'ai', false);
                 }
             }
-            setTimeout(() => {
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                updateScrollButtonVisibility();
-            }, 50);
         }
 
         function saveChats() {
@@ -1080,7 +973,6 @@
             messagesDiv.appendChild(wrapper);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
             if (save) saveChats();
-            updateScrollButtonVisibility();
             return wrapper;
         }
 
@@ -1094,13 +986,11 @@
             wrapper.appendChild(loadingDiv);
             messagesDiv.appendChild(wrapper);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            updateScrollButtonVisibility();
         }
 
         function hideLoading() {
             const loadingWrapper = document.getElementById('loading-indicator-wrapper');
             if (loadingWrapper) loadingWrapper.remove();
-            updateScrollButtonVisibility();
         }
 
         function getSelectedModel() {
@@ -1145,7 +1035,6 @@
                                 fullResponse += parsed.content;
                                 aiMessageDiv.innerHTML = formatMessage(fullResponse);
                                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                                updateScrollButtonVisibility();
                             }
                         } catch (e) {}
                     }
@@ -1172,7 +1061,6 @@
             });
             wrapper.appendChild(copyBtn);
             saveChats();
-            updateScrollButtonVisibility();
             return fullResponse;
         }
 
@@ -1186,7 +1074,6 @@
             const data = await response.json();
             if (data.error) throw new Error(data.error);
             addMessage(data.reply, 'ai');
-            updateScrollButtonVisibility();
             return data.reply;
         }
 
@@ -1220,7 +1107,6 @@
                 userInput.disabled = false;
                 userInput.focus();
                 scrollInputIntoView();
-                updateScrollButtonVisibility();
             }
         }
 
@@ -1229,10 +1115,6 @@
             addMessage('🧹 Chat telah dihapus. Mulai percakapan baru!', 'ai', false);
             localStorage.removeItem('chatHistory');
             showToast('Chat dihapus');
-            setTimeout(() => {
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                updateScrollButtonVisibility();
-            }, 30);
         }
 
         function clearChat() {
@@ -1291,11 +1173,7 @@
         resetModelSelect();
         userInput.focus();
         
-        setTimeout(() => {
-            updateScrollButtonVisibility();
-        }, 100);
-        
-        console.log('✅ ChatGO dengan tombol panah bawah (tidak menimpa tombol kirim) siap digunakan!');
+        console.log('✅ ChatGO dengan enhanced code highlighting dan default model (Llama 3.3 70B) siap digunakan!');
     </script>
 </body>
 </html>
