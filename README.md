@@ -109,7 +109,7 @@ chatgo/
 
 ---
 
-## 🚀 Cara Menjalankan {#cara-menjalankan}
+## 🚀 Cara Menjalankan
 
 ### Prasyarat
 
@@ -149,10 +149,10 @@ pip install -r requirements.txt
 Buat file `.env` di root folder:
 
 ```env
-GROQ_API_KEY=gsk_your_api_key_here
+GROQ_API_KEY=your_api_key_here
 ```
 
-Dapatkan API key dari: [https://console.groq.com/keys](https://console.groq.com/keys)
+Dapatkan API key dari Groq (daftar dulu)
 
 ### Langkah 5: Jalankan Aplikasi
 
@@ -180,15 +180,8 @@ httpx==0.27.0
 
 ## 🔧 Konfigurasi Penting
 
-### Mengaktifkan/Nonaktifkan Streaming
 
-Di `static/index.html`, cari baris:
-
-```javascript
-const USE_STREAMING = true;  // Set ke false untuk non-streaming
-```
-
-### Mengganti Model Default
+### Mengganti Model AI Default
 
 Di `static/index.html`, cari:
 
@@ -201,7 +194,7 @@ const DEFAULT_MODEL = 'llama-3.3-70b-versatile';  // Ganti sesuai kebutuhan
 Di `main.py`, baris terakhir:
 
 ```python
-uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
+uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti ke port 8001
 ```
 
 ---
@@ -211,9 +204,9 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 ### 1. Copy Pesan
 - Tombol **"📋 Salin"** berada **di luar bubble pesan AI** (di bawah kanan)
 - Klik untuk menyalin teks ke clipboard
-- Notifikasi "✅ Pesan disalin!" muncul
+- Notifikasi "✅ Tersalin!" muncul
 
-### 2. Dark Mode
+### 2. Light/Dark Mode
 - Klik tombol 🌙 di header
 - Preferensi tersimpan di localStorage
 - Mode bertahan setelah refresh
@@ -221,7 +214,7 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 ### 3. Chat History
 - Semua percakapan tersimpan otomatis
 - Data tetap ada setelah refresh browser
-- Tombol 🗑️ dengan konfirmasi modal untuk hapus semua
+- Tombol 🗑️ dengan konfirmasi modal untuk hapus semua chat
 
 ### 4. Multiple AI Models
 - Dropdown "Pilih Model AI" di header
@@ -230,7 +223,6 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 ### 5. Code Highlighting
 - Support Python, HTML, CSS, JavaScript, dan lainnya
 - Syntax highlighting warna-warni di dalam ``` blocks
-- Kode tetap terbaca rapi di dark mode
 
 ### 6. Auto-detect API URL
 - Otomatis pakai `localhost:8000` saat develop
@@ -239,7 +231,7 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 
 ---
 
-## 🌐 Deployment ke Production {#deployment}
+## 🌐 Deployment ke Production
 
 ### Option 1: Railway.app (Rekomendasi - Tanpa Kartu Kredit)
 
@@ -250,17 +242,6 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 5. Pilih repository `chatgo`
 6. **Variables** → Tambah `GROQ_API_KEY`
 7. Deploy otomatis! 🎉
-
-### Option 2: Render.com (Butuh Kartu Kredit verifikasi)
-
-1. Push kode ke GitHub
-2. Buka [https://render.com](https://render.com)
-3. **New Web Service** → Connect GitHub
-4. Settings:
-   - Build: `pip install -r requirements.txt`
-   - Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-5. Add Environment Variable: `GROQ_API_KEY`
-6. Deploy
 
 ---
 
