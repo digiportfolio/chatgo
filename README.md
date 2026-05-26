@@ -76,10 +76,10 @@
 
 ```mermaid
 graph LR
-    A[User Browser] --> B[HTML/CSS/JS Frontend]
-    B --> C[FastAPI Backend]
-    C --> D[Groq Cloud API]
-    D --> E[Llama 3 / Gemma AI Models]
+    A[User Browser] --> B[HTML/CSS/JS (Frontend)]
+    B --> C[Python FastAPI (Backend)]
+    C --> D[Groq API]
+    D --> E[Llama 3 / Gemma (AI Models)]
     
     style A fill:#667eea,stroke:#333,color:#fff
     style B fill:#764ba2,stroke:#333,color:#fff
@@ -92,9 +92,9 @@ graph LR
 |---------|-----------|-------------|
 | **Frontend** | HTML5 + CSS3 + Vanilla JS | Murni tanpa framework |
 | **Backend** | Python + FastAPI + Uvicorn | REST API dengan streaming SSE |
-| **AI Provider** | Groq Cloud API | 30 request/menit |
+| **AI Provider** | Groq API | 30 request/menit |
 | **Storage** | LocalStorage (client-side) | History chat di browser |
-| **Deployment** | Railway / Render | Hosting |
+| **Deployment** | Railway | Hosting |
 
 ---
 
@@ -102,13 +102,17 @@ graph LR
 
 ```
 chatgo/
-├── main.py              # Backend FastAPI (endpoint chat, streaming)
+├── main.py              # Backend FastAPI (endpoint, streaming)
 ├── requirements.txt     # Python dependencies
-├── .env                 # API key (jangan commit!)
+├── .env                 # API key (jangan commit ke github!)
 ├── .gitignore           # File yang diabaikan Git
 ├── static/
 │   └── index.html      # Frontend lengkap (HTML + CSS + JS)
-└── README.md           # Dokumentasi ini
+|   └── chatgo.png      # logo ChatGO (untuk favicon dan h1)
+|   readme_images/
+|   └── light mode.jpeg # Screenshot UI ChatGO (light mode)
+|   └── dark mode.jpeg  # Screenshot UI ChatGO (dark mode)
+└── README.md           # Dokumentasi
 ```
 
 ---
