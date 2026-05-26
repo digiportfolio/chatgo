@@ -1,80 +1,135 @@
 ```markdown
 # 🚀 ChatGO - Free AI Assistant
 
-> Sebuah aplikasi chat AI gratis yang menggunakan API Groq dengan backend FastAPI dan frontend murni HTML/CSS/JS. Proyek portofolio untuk Python Developer.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/FastAPI-0.100%2B-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+  <img src="https://img.shields.io/badge/Groq-API-F55036?style=for-the-badge&logo=groq&logoColor=white">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge&logo=mit&logoColor=white">
+  <img src="https://img.shields.io/badge/Status-Online-2ea44f?style=for-the-badge">
+</p>
 
-![GitHub](https://img.shields.io/badge/Python-3.8%2B-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-green)
-![Groq](https://img.shields.io/badge/Groq-API-orange)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+<p align="center">
+  <strong>Aplikasi chat AI gratis dengan streaming real-time, dark mode, dan syntax highlighting</strong><br>
+  Dibangun dengan Python FastAPI + Groq API + HTML/CSS/JS murni
+</p>
 
-## ✨ Fitur Unggulan
+<p align="center">
+  <a href="#demo">Demo</a> •
+  <a href="#fitur">Fitur</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#cara-menjalankan">Cara Menjalankan</a> •
+  <a href="#deployment">Deployment</a>
+</p>
+
+---
+
+## 📸 Demo
+
+<table>
+  <tr>
+    <td align="center"><strong>Light Mode</strong></td>
+    <td align="center"><strong>Dark Mode</strong></td>
+    <td align="center"><strong>Mobile View</strong></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/light-mode.png" width="250"></td>
+    <td><img src="screenshots/dark-mode.png" width="250"></td>
+    <td><img src="screenshots/mobile.png" width="150"></td>
+  </tr>
+</table>
+
+> 💡 *Screenshot sementara - ganti dengan screenshot asli ChatGO Anda*
+
+**[🔗 Live Demo - ChatGO di Railway](https://chatgo.up.railway.app)** *(ganti dengan URL Railway Anda)*
+
+---
+
+## ✨ Fitur Unggulan {#fitur}
 
 | Fitur | Status | Deskripsi |
-|-------|--------|------------|
+|:------|:------:|:----------|
 | 💬 **Real-time Chat** | ✅ | Kirim pesan dan dapatkan respons instan dari AI |
-| 🎯 **Streaming Response** | ✅ | Teks muncul huruf per huruf (seperti ChatGPT) |
-| 🌙 **Dark Mode** | ✅ | Toggle antara mode terang dan gelap |
-| 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik |
-| 💾 **Chat History** | ✅ | Percakapan tersimpan otomatis di localStorage |
-| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI gratis berbeda |
+| 🎯 **Streaming Response** | ✅ | Teks muncul huruf per huruf seperti ChatGPT asli |
+| 🌙 **Dark Mode** | ✅ | Toggle antara mode terang dan gelap, tersimpan otomatis |
+| 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik (tombol di luar bubble) |
+| 💾 **Chat History** | ✅ | Percakapan tersimpan di localStorage browser |
+| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI gratis (Llama 3.3, Llama 3.1, Gemma 2) |
 | 📱 **Responsive Design** | ✅ | Bekerja sempurna di desktop, tablet, dan HP |
-| 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk kode |
-| 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan sekali klik |
+| 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk Python, HTML, CSS, JavaScript |
+| 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan konfirmasi modal |
+| ⚡ **Auto-detect API URL** | ✅ | Bisa jalan di localhost dan production tanpa config ulang |
+
+---
 
 ## 🧠 Model AI Tersedia
 
-| Model | Kode | Kecepatan | Kualitas |
-|-------|------|-----------|----------|
-| 🦙 Llama 3.3 70B | `llama-3.3-70b-versatile` | Medium | ★★★★★ (Terbaik) |
-| 🚀 Llama 3.1 70B | `llama-3.1-70b-versatile` | Medium | ★★★★☆ |
-| ⚡ Llama 3.1 8B | `llama-3.1-8b-instant` | Sangat Cepat | ★★★☆☆ |
-| 🔬 Gemma 2 9B | `gemma2-9b-it` | Cepat | ★★★☆☆ |
+| Model | Kode | Kecepatan | Kualitas | Rekomendasi |
+|-------|------|-----------|----------|-------------|
+| 🦙 **Llama 3.3 70B** | `llama-3.3-70b-versatile` | Medium | ★★★★★ | **Default (Terbaik)** |
+| 🚀 **Llama 3.1 70B** | `llama-3.1-70b-versatile` | Medium | ★★★★☆ | Alternatif handal |
+| ⚡ **Llama 3.1 8B** | `llama-3.1-8b-instant` | Sangat Cepat | ★★★☆☆ | Untuk respons cepat |
+| 🔬 **Gemma 2 9B** | `gemma2-9b-it` | Cepat | ★★★☆☆ | Model dari Google |
 
-## 🛠️ Tech Stack
+> Semua model **100% GRATIS** via Groq Cloud API
 
+---
+
+## 🛠️ Tech Stack {#tech-stack}
+
+```mermaid
+graph LR
+    A[User Browser] --> B[HTML/CSS/JS Frontend]
+    B --> C[FastAPI Backend]
+    C --> D[Groq Cloud API]
+    D --> E[Llama 3 / Gemma AI Models]
+    
+    style A fill:#667eea,stroke:#333,color:#fff
+    style B fill:#764ba2,stroke:#333,color:#fff
+    style C fill:#667eea,stroke:#333,color:#fff
+    style D fill:#764ba2,stroke:#333,color:#fff
+    style E fill:#667eea,stroke:#333,color:#fff
 ```
-┌─────────────────────────────────────────────────────┐
-│                    Frontend                          │
-│         HTML5 + CSS3 + Vanilla JS                   │
-│         (LocalStorage, Fetch API, SSE)              │
-├─────────────────────────────────────────────────────┤
-│                    Backend                           │
-│         Python + FastAPI + Uvicorn                  │
-├─────────────────────────────────────────────────────┤
-│                    AI Provider                       │
-│         Groq Cloud API (100% Gratis)                │
-│         (Mixtral, Llama 3, Gemma)                   │
-├─────────────────────────────────────────────────────┤
-│                    Deployment                        │
-│         Render / Railway / PythonAnywhere           │
-└─────────────────────────────────────────────────────┘
-```
+
+| Lapisan | Teknologi | Keterangan |
+|---------|-----------|-------------|
+| **Frontend** | HTML5 + CSS3 + Vanilla JS | Murni tanpa framework |
+| **Backend** | Python + FastAPI + Uvicorn | REST API dengan streaming SSE |
+| **AI Provider** | Groq Cloud API | 100% gratis, 30 request/menit |
+| **Storage** | LocalStorage (client-side) | History chat di browser |
+| **Deployment** | Railway / Render | Hosting gratis |
+
+---
 
 ## 📁 Struktur Proyek
 
 ```
 chatgo/
-├── main.py              # Backend FastAPI
+├── main.py              # Backend FastAPI (endpoint chat, streaming)
 ├── requirements.txt     # Python dependencies
 ├── .env                 # API key (jangan commit!)
+├── .gitignore           # File yang diabaikan Git
 ├── static/
-│   └── index.html      # Frontend lengkap (html, css, js)
-├── .gitignore          # File yang diabaikan Git
+│   └── index.html      # Frontend lengkap (HTML + CSS + JS)
 └── README.md           # Dokumentasi ini
 ```
 
-## 🚀 Cara Menjalankan Lokal
+---
+
+## 🚀 Cara Menjalankan {#cara-menjalankan}
 
 ### Prasyarat
 
-- Python 3.8 atau lebih baru
-- Akun Groq (gratis) di https://console.groq.com
+| Requirement | Keterangan |
+|-------------|------------|
+| Python 3.8+ | [Download Python](https://python.org) |
+| Akun Groq | [Daftar gratis](https://console.groq.com) - tanpa kartu kredit |
+| Git (opsional) | [Download Git](https://git-scm.com) |
 
 ### Langkah 1: Clone Repository
 
 ```bash
-git clone https://github.com/username/chatgo.git
+git clone https://github.com/digiportfolio/chatgo.git
 cd chatgo
 ```
 
@@ -85,8 +140,8 @@ cd chatgo
 python -m venv venv
 venv\Scripts\activate
 
-# Mac/Linux
-python -m venv venv
+# Mac / Linux
+python3 -m venv venv
 source venv/bin/activate
 ```
 
@@ -101,10 +156,10 @@ pip install -r requirements.txt
 Buat file `.env` di root folder:
 
 ```env
-GROQ_API_KEY=your_groq_api_key_here
+GROQ_API_KEY=gsk_your_api_key_here
 ```
 
-Dapatkan API key dari: https://console.groq.com/keys
+Dapatkan API key dari: [https://console.groq.com/keys](https://console.groq.com/keys)
 
 ### Langkah 5: Jalankan Aplikasi
 
@@ -116,19 +171,21 @@ python main.py
 
 Akses: **http://localhost:8000**
 
-## 📦 Dependencies
+---
 
-Buat file `requirements.txt`:
+## 📦 Dependencies (`requirements.txt`)
 
 ```txt
-fastapi==0.104.1
-uvicorn==0.24.0
-groq==0.4.2
+fastapi==0.115.0
+uvicorn==0.30.0
+groq==0.9.0
 python-dotenv==1.0.0
-httpx==0.25.1
+httpx==0.27.0
 ```
 
-## 🔧 Konfigurasi
+---
+
+## 🔧 Konfigurasi Penting
 
 ### Mengaktifkan/Nonaktifkan Streaming
 
@@ -140,73 +197,84 @@ const USE_STREAMING = true;  // Set ke false untuk non-streaming
 
 ### Mengganti Model Default
 
-Di `main.py`:
+Di `static/index.html`, cari:
+
+```javascript
+const DEFAULT_MODEL = 'llama-3.3-70b-versatile';  // Ganti sesuai kebutuhan
+```
+
+### Mengganti Port (jika 8000 sudah dipakai)
+
+Di `main.py`, baris terakhir:
 
 ```python
-model: str = "llama-3.3-70b-versatile"  # Ganti sesuai kebutuhan
+uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti 8001
 ```
+
+---
 
 ## 🎯 Fitur Detail
 
 ### 1. Copy Pesan
-- Hover pada pesan AI → muncul tombol "Salin"
+- Tombol **"📋 Salin"** berada **di luar bubble pesan AI** (di bawah kanan)
 - Klik untuk menyalin teks ke clipboard
-- Notifikasi konfirmasi muncul
+- Notifikasi "✅ Pesan disalin!" muncul
 
 ### 2. Dark Mode
-- Klik tombol 🌙 Dark di header
+- Klik tombol 🌙 di header
 - Preferensi tersimpan di localStorage
-- Mode terang/gelap bertahan setelah refresh
+- Mode bertahan setelah refresh
 
 ### 3. Chat History
 - Semua percakapan tersimpan otomatis
 - Data tetap ada setelah refresh browser
-- Tombol "Clear Chat" untuk menghapus semua
+- Tombol 🗑️ dengan konfirmasi modal untuk hapus semua
 
-### 4. Multiple Models
-- Dropdown di header untuk切换 model
-- Setiap model punya karakteristik berbeda
+### 4. Multiple AI Models
+- Dropdown "Pilih Model AI" di header
+- **Default model: Llama 3.3 70B** (paling pintar)
+- Setiap model gratis dan cepat
 
 ### 5. Code Highlighting
-- Support HTML tags (ditampilkan sebagai teks, tidak dirender)
-- Syntax highlighting untuk kode dalam ``` blocks
+- Support Python, HTML, CSS, JavaScript, dan lainnya
+- Syntax highlighting warna-warni di dalam ``` blocks
+- Kode tetap terbaca rapi di dark mode
 
-## 🌐 Deployment ke Production
+### 6. Auto-detect API URL
+- Otomatis pakai `localhost:8000` saat develop
+- Otomatis pakai domain production saat deploy
+- **Tidak perlu ganti-ganti file!**
 
-### Render.com (Rekomendasi - Gratis)
+---
+
+## 🌐 Deployment ke Production {#deployment}
+
+### Option 1: Railway.app (Rekomendasi - Tanpa Kartu Kredit)
 
 1. Push kode ke GitHub
-2. Buka https://render.com
-3. New → Web Service
-4. Connect repository
-5. Settings:
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-6. Add Environment Variable: `GROQ_API_KEY`
-7. Deploy
+2. Buka [https://railway.app](https://railway.app)
+3. Login dengan GitHub
+4. **New Project** → **Deploy from GitHub repo**
+5. Pilih repository `chatgo`
+6. **Variables** → Tambah `GROQ_API_KEY`
+7. Deploy otomatis! 🎉
 
-### Railway.app (Alternatif)
+### Option 2: Render.com (Butuh Kartu Kredit verifikasi)
 
-```bash
-railway login
-railway init
-railway up
-```
+1. Push kode ke GitHub
+2. Buka [https://render.com](https://render.com)
+3. **New Web Service** → Connect GitHub
+4. Settings:
+   - Build: `pip install -r requirements.txt`
+   - Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+5. Add Environment Variable: `GROQ_API_KEY`
+6. Deploy
 
-## 📸 Screenshot
+---
 
-### Light Mode
-![Light Mode](screenshots/light-mode.png)
+## 🧪 Testing API
 
-### Dark Mode
-![Dark Mode](screenshots/dark-mode.png)
-
-### Mobile View
-![Mobile](screenshots/mobile.png)
-
-## 🧪 Testing
-
-### Test API Endpoint
+### Test Endpoint Chat (tanpa streaming)
 
 ```bash
 curl -X POST http://localhost:8000/chat \
@@ -220,72 +288,110 @@ curl -X POST http://localhost:8000/chat \
 curl http://localhost:8000/health
 ```
 
+### Expected Response
+
+```json
+{
+  "status": "ok",
+  "available_models": [
+    "llama-3.3-70b-versatile",
+    "llama-3.1-70b-versatile",
+    "llama-3.1-8b-instant",
+    "gemma2-9b-it"
+  ]
+}
+```
+
+---
+
 ## 🐛 Troubleshooting
 
 | Masalah | Solusi |
 |---------|--------|
-| Error 400 - Model decommissioned | Ganti model di dropdown dengan yang aktif |
-| API Key invalid | Cek `.env` file dan restart server |
-| Port 8000 sudah dipakai | Ganti port di `main.py`: `port=8001` |
-| Streaming tidak jalan | Set `USE_STREAMING = false` di HTML |
-| CORS error | Pastikan CORS middleware aktif di `main.py` |
+| **Error 400 - Model decommissioned** | Ganti model di dropdown (Llama 3.3 70B atau Llama 3.1 70B) |
+| **API Key invalid** | Cek file `.env` dan restart server |
+| **Port 8000 sudah dipakai** | Ganti port di `main.py` menjadi `port=8001` |
+| **Streaming tidak jalan** | Set `USE_STREAMING = false` di HTML (sementara) |
+| **CORS error** | Pastikan CORS middleware aktif di `main.py` |
+| **Failed to fetch di production** | Tunggu redeploy selesai (1-2 menit) lalu refresh hard (Ctrl+F5) |
+| **Railway crashed** | Cek log: biasanya `GROQ_API_KEY` tidak diset |
+
+---
 
 ## 📈 Roadmap
 
 - [ ] Voice input (Web Speech API)
-- [ ] Export chat ke PDF/Markdown
-- [ ] Multi-user authentication
-- [ ] Database PostgreSQL untuk menyimpan history
+- [ ] Export chat ke PDF / Markdown
+- [ ] Multi-user authentication (Login)
+- [ ] Database PostgreSQL untuk history permanen
 - [ ] Custom system prompt
-- [ ] Temperature slider untuk kontrol kreativitas
+- [ ] Temperature slider (kreativitas AI)
+- [ ] Pinned messages / bookmark
+
+---
 
 ## 🤝 Kontribusi
 
-Pull requests diterima. Untuk perubahan besar, buka issue dulu untuk diskusi.
+Pull requests sangat diterima! Untuk perubahan besar:
+
+1. **Fork** repository ini
+2. Buat **branch fitur** (`git checkout -b fitur-keren`)
+3. **Commit** perubahan (`git commit -m 'Tambahkan fitur keren'`)
+4. **Push** ke branch (`git push origin fitur-keren`)
+5. Buka **Pull Request**
+
+---
 
 ## 📝 License
 
-MIT License - Bebas digunakan untuk belajar dan portofolio.
+**MIT License** - Bebas digunakan untuk belajar, portofolio, dan komersial.
+
+```
+Copyright (c) 2025 Fadli
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+
+---
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@username](https://github.com/username)
-- LinkedIn: [linkedin.com/in/username](https://linkedin.com/in/username)
+**Fadli** (SAYA-FADLI)
+
+- GitHub: [@digiportfolio](https://github.com/digiportfolio)
+- LinkedIn: [linkedin.com/in/fadli](https://linkedin.com/in/fadli) *(opsional)*
+- Portfolio: [fadli.dev](https://fadli.dev) *(opsional)*
+
+---
 
 ## 🙏 Acknowledgments
 
-- [Groq](https://groq.com) untuk API gratis yang cepat
-- [FastAPI](https://fastapi.tiangolo.com) untuk framework backend
-- [Meta](https://ai.meta.com/llama/) untuk Llama 3 model
-- [Google](https://ai.google.dev/gemma) untuk Gemma model
+| Pihak | Kontribusi |
+|-------|------------|
+| **[Groq](https://groq.com)** | API gratis super cepat (Mixtral, Llama 3, Gemma) |
+| **[FastAPI](https://fastapi.tiangolo.com)** | Framework backend modern Python |
+| **[Meta AI](https://ai.meta.com/llama/)** | Llama 3.3 & Llama 3.1 models |
+| **[Google](https://ai.google.dev/gemma)** | Gemma 2 model |
+| **[Railway](https://railway.app)** | Hosting gratis untuk deploy |
 
 ---
 
 ## ⭐ Show Your Support
 
-Beri ⭐ jika proyek ini bermanfaat!
+**Beri ⭐ di GitHub jika proyek ini bermanfaat!**
 
-**Dibuat dengan ❤️ untuk portofolio Python Developer**
-```
+<p align="center">
+  <a href="https://github.com/digiportfolio/chatgo">
+    <img src="https://img.shields.io/badge/⭐-Star_on_GitHub-yellow?style=for-the-badge">
+  </a>
+</p>
 
 ---
 
-## Catatan Tambahan
-
-### Jika Ingin Tambah Screenshot
-
-Buat folder `screenshots/` dan tambahkan file:
-- `light-mode.png`
-- `dark-mode.png` 
-- `mobile.png`
-
-### Jika Ingin Badge yang Lebih Banyak
-
-```markdown
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-teal)
-![Groq](https://img.shields.io/badge/Groq-API-orange)
-![License](https://img.shields.io/badge/license-MIT-green)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+<p align="center">
+  <b>Dibuat dengan ❤️ untuk portofolio Python Developer</b><br>
+  <sub>© 2025 Fadli - MIT License</sub>
+</p>
 ```
