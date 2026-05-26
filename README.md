@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>Aplikasi chat AI dengan streaming real-time, dark mode, dan syntax highlighting</strong><br>
+  <strong>Aplikasi chat AI dengan streaming real-time, light/dark mode, dan syntax highlighting</strong><br>
   Dibangun dengan Python FastAPI + Groq API + HTML/CSS/JS murni
 </p>
 
@@ -35,29 +35,27 @@
   <tr>
     <td><img src="screenshots/light-mode.png" width="250"></td>
     <td><img src="screenshots/dark-mode.png" width="250"></td>
-    <td><img src="screenshots/mobile.png" width="150"></td>
   </tr>
 </table>
 
-> 💡 *Screenshot sementara - ganti dengan screenshot asli ChatGO Anda*
 
-**[🔗 Live Demo - ChatGO di Railway](https://chatgo.up.railway.app)** *(ganti dengan URL Railway Anda)*
+**[🔗 Live Demo - ChatGO di Railway](https://chatgo.up.railway.app)**
 
 ---
 
-## ✨ Fitur Unggulan {#fitur}
+## ✨ Fitur Unggulan
 
 | Fitur | Status | Deskripsi |
 |:------|:------:|:----------|
 | 💬 **Real-time Chat** | ✅ | Kirim pesan dan dapatkan respons instan dari AI |
 | 🎯 **Streaming Response** | ✅ | Teks muncul huruf per huruf |
-| 🌙 **Dark Mode** | ✅ | Toggle antara mode terang dan gelap, tersimpan otomatis |
-| 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik (tombol di luar bubble) |
+| 🌙 **Light/Dark Mode** | ✅ | Toggle antara mode terang dan gelap |
+| 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik |
 | 💾 **Chat History** | ✅ | Percakapan tersimpan di localStorage browser |
-| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI (Llama 3.3, Llama 3.1, Gemma 2) |
-| 📱 **Responsive Design** | ✅ | Bekerja sempurna di desktop, tablet, dan HP |
+| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI (Llama 3.3 70B, Llama 3.1 70B, Llama 3.1 8B, Gemma 2 9B) |
+| 📱 **Responsive Design** | ✅ | Bekerja sempurna di hp, tablet, dan desktop |
 | 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk kode |
-| 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan konfirmasi modal |
+| 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan dialog konfirmasi |
 | ⚡ **Auto-detect API URL** | ✅ | Bisa jalan di localhost dan production tanpa config ulang |
 
 ---
@@ -66,16 +64,16 @@
 
 | Model | Kode | Kecepatan | Kualitas | Rekomendasi |
 |-------|------|-----------|----------|-------------|
-| 🦙 **Llama 3.3 70B** | `llama-3.3-70b-versatile` | Medium | ★★★★★ | **Default (Terbaik)** |
-| 🚀 **Llama 3.1 70B** | `llama-3.1-70b-versatile` | Medium | ★★★★☆ | Alternatif handal |
-| ⚡ **Llama 3.1 8B** | `llama-3.1-8b-instant` | Sangat Cepat | ★★★☆☆ | Untuk respons cepat |
-| 🔬 **Gemma 2 9B** | `gemma2-9b-it` | Cepat | ★★★☆☆ | Model dari Google |
+| **Llama 3.3 70B** | `llama-3.3-70b-versatile` | Medium | ★★★★★ | **Default (Terbaik)** |
+| **Llama 3.1 70B** | `llama-3.1-70b-versatile` | Medium | ★★★★☆ | Alternatif handal |
+| **Llama 3.1 8B** | `llama-3.1-8b-instant` | Sangat Cepat | ★★★☆☆ | Untuk respons cepat |
+| **Gemma 2 9B** | `gemma2-9b-it` | Cepat | ★★★☆☆ | Model dari Google |
 
-> Semua model via Groq Cloud API
+> Semua model tersedia via Groq API
 
 ---
 
-## 🛠️ Tech Stack {#tech-stack}
+## 🛠️ Tech Stack
 
 ```mermaid
 graph LR
