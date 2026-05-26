@@ -820,6 +820,36 @@
         let isWaiting = false;
         let pendingClearAction = null;
 
+        // --- PENINGKATAN UX: Memastikan input area selalu terlihat di atas keyboard mobile ---
+        function scrollInputIntoView() {
+            // Hanya berlaku untuk perangkat mobile (layar sentuh dan lebar maksimal 768px sebagai indikasi)
+            const isMobile = window.matchMedia("(max-width: 768px) and (hover: none)").matches || 
+                             (('ontouchstart' in window) && window.innerWidth <= 768);
+            if (!isMobile) return;
+
+            // Beri sedikit jeda agar keyboard sempat muncul sebelum scrolling
+            setTimeout(() => {
+                const inputArea = document.querySelector('.input-area');
+                if (inputArea) {
+                    // Gunakan scrollIntoView dengan perilaku halus, blok ke 'end' agar input area berada di bagian bawah viewport
+                    inputArea.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                }
+            }, 150); // Jeda kecil membantu beberapa browser mobile
+        }
+
+        // Tambahkan event listener focus pada input untuk memicu scroll
+        userInput.addEventListener('focus', () => {
+            scrollInputIntoView();
+        });
+
+        // Tambahkan juga untuk memastikan saat keyboard muncul setelah orientasi berubah atau resize
+        window.addEventListener('resize', () => {
+            if (document.activeElement === userInput) {
+                scrollInputIntoView();
+            }
+        });
+        // --- AKHIR PENINGKATAN UX ---
+
         function showToast(message, isError = false) {
             toast.textContent = isError ? `❌ ${message}` : `✅ ${message}`;
             toast.classList.add('show');
@@ -1015,8 +1045,6 @@
 
         // Fungsi untuk mendapatkan model yang akan digunakan (default jika belum dipilih)
         function getSelectedModel() {
-            // Jika modelSelect memiliki value yang valid (bukan empty string), gunakan itu
-            // Jika tidak (masih placeholder), gunakan default model (Llama 3.3 70B)
             return modelSelect.value || DEFAULT_MODEL;
         }
 
@@ -1111,7 +1139,6 @@
             sendBtn.disabled = true;
             userInput.disabled = true;
             
-            // Gunakan model yang dipilih atau default jika belum memilih
             const model = getSelectedModel();
             
             try {
@@ -1131,6 +1158,8 @@
                 sendBtn.disabled = false;
                 userInput.disabled = false;
                 userInput.focus();
+                // Setelah mengirim, scroll input area ke view untuk memastikan tetap terlihat (di mobile)
+                scrollInputIntoView();
             }
         }
 
@@ -1158,19 +1187,15 @@
                 document.body.classList.add('dark');
                 darkModeBtn.textContent = '☀️';
             } else {
-                // Pastikan mode terang (tanpa class 'dark') dan ikon bulan
                 document.body.classList.remove('dark');
                 darkModeBtn.textContent = '🌙';
             }
         }
 
-        // Setup model select behavior: reset ke placeholder saat load/reload
         function resetModelSelect() {
-            // Selalu set ke value kosong (placeholder "Pilih Model AI") saat load/reload
             modelSelect.value = '';
         }
 
-        // Event listeners untuk modal
         modalCancelBtn.addEventListener('click', () => {
             hideModal();
         });
@@ -1196,10 +1221,9 @@
             }
         });
 
-        // Inisialisasi
         loadChats();
-        loadDarkMode();   // Load dark mode preference (default ke light/terang)
-        resetModelSelect();   // Reset pilihan model ke placeholder setiap load/reload
+        loadDarkMode();
+        resetModelSelect();
         userInput.focus();
         
         console.log('✅ ChatGO dengan enhanced code highlighting dan default model (Llama 3.3 70B) siap digunakan!');
