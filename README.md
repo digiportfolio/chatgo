@@ -308,7 +308,7 @@ in the Software without restriction...
 **Fadli** (SAYA-FADLI)
 
 - GitHub: [@digiportfolio](https://github.com/digiportfolio)
-- LinkedIn: [linkedin.com/in/fadli](www.linkedin.com/in/mohammad-fadli-mubarrok-a77407333)
+- LinkedIn: [www.linkedin.com/in/mohammad-fadli-mubarrok-a77407333](www.linkedin.com/in/mohammad-fadli-mubarrok-a77407333)
 
 ---
 
