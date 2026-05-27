@@ -305,7 +305,7 @@ in the Software without restriction...
 
 ## 👨‍💻 Author
 
-**Fadli** (SAYA-FADLI)
+**Mohammad Fadli Mubarrok** (SAYA-FADLI)
 
 - GitHub: [@digiportfolio](https://github.com/digiportfolio)
 - LinkedIn: [https://www.linkedin.com/in/mohammad-fadli-mubarrok-a77407333/](https://www.linkedin.com/in/mohammad-fadli-mubarrok-a77407333/)
