@@ -294,7 +294,7 @@ curl http://localhost:8000/health
 **MIT License** - Bebas digunakan untuk belajar.
 
 ```
-Copyright (c) 2026 Fadli
+Copyright (c) 2026 Mohammad Fadli Mubarrok
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -308,7 +308,7 @@ in the Software without restriction...
 **Fadli** (SAYA-FADLI)
 
 - GitHub: [@digiportfolio](https://github.com/digiportfolio)
-- LinkedIn: [linkedin.com/in/fadli](https://linkedin.com/in/fadli)
+- LinkedIn: [linkedin.com/in/fadli](www.linkedin.com/in/mohammad-fadli-mubarrok-a77407333)
 
 ---
 
@@ -338,5 +338,5 @@ in the Software without restriction...
 
 <p align="center">
   <b>Dibuat dengan ❤️ untuk portofolio Backend Developer</b><br>
-  <sub>© 2026 Fadli - MIT License</sub>
+  <sub>© 2026 Mohammad Fadli Mubarrok - MIT License</sub>
 </p>
