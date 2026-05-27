@@ -64,10 +64,10 @@
 
 ```mermaid
 graph LR
-    A[User (Browser)] --> B[HTML/CSS/JS (Frontend)]
-    B --> C[Python FastAPI (Backend)]
+    A[User: Browser] --> B[Frontend: HTML/CSS/JS]
+    B --> C[Backend: Python FastAPI]
     C --> D[Groq API]
-    D --> E[Llama 3 (AI Models)]
+    D --> E[AI Models: Llama 3]
 ```
 
 | Lapisan | Teknologi | Keterangan |
