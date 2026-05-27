@@ -13,17 +13,9 @@
   Dibangun dengan Python FastAPI + Groq API + HTML/CSS/JS murni
 </p>
 
-<p align="center">
-  <a href="#demo">Demo</a> •
-  <a href="#fitur">Fitur</a> •
-  <a href="#tech-stack">Tech Stack</a> •
-  <a href="#cara-menjalankan">Cara Menjalankan</a> •
-  <a href="#deployment">Deployment</a>
-</p>
-
 ---
 
-## 📸 Demo {#demo}
+## 📸 Demo
 
 <table align="center">
   <tr>
@@ -40,7 +32,7 @@
 
 ---
 
-## ✨ Fitur Unggulan {#fitur}
+## ✨ Fitur Unggulan
 
 | Fitur | Status | Deskripsi |
 |:------|:------:|:----------|
@@ -68,7 +60,7 @@
 
 ---
 
-## 🛠️ Tech Stack {#tech-stack}
+## 🛠️ Tech Stack
 
 ```mermaid
 graph LR
@@ -107,7 +99,7 @@ chatgo/
 
 ---
 
-## 🚀 Cara Menjalankan {#cara-menjalankan}
+## 🚀 Cara Menjalankan
 
 ### Prasyarat
 
@@ -178,6 +170,7 @@ httpx==0.27.0
 
 ## 🔧 Konfigurasi Penting
 
+
 ### Mengganti Model AI Default
 
 Di `static/index.html`, cari:
@@ -228,7 +221,7 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti ke port 8001
 
 ---
 
-## 🌐 Deployment ke Production {#deployment}
+## 🌐 Deployment ke Production
 
 ### Option 1: Railway.app (Rekomendasi - Tanpa Kartu Kredit)
 
@@ -239,16 +232,6 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti ke port 8001
 5. Pilih repository `chatgo`
 6. **Variables** → Tambah `GROQ_API_KEY`
 7. Deploy otomatis! 🎉
-
-### Option 2: Vercel
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. `vercel --prod`
-
-### Option 3: Heroku
-
-1. Buat `Procfile`: `web: uvicorn main:app --host 0.0.0.0 --port $PORT`
-2. Push ke Heroku
 
 ---
 
