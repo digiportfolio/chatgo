@@ -23,7 +23,7 @@
 
 ---
 
-## 📸 Demo
+## 📸 Demo {#demo}
 
 <table align="center">
   <tr>
@@ -40,7 +40,7 @@
 
 ---
 
-## ✨ Fitur Unggulan
+## ✨ Fitur Unggulan {#fitur}
 
 | Fitur | Status | Deskripsi |
 |:------|:------:|:----------|
@@ -68,7 +68,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack {#tech-stack}
 
 ```mermaid
 graph LR
@@ -107,7 +107,7 @@ chatgo/
 
 ---
 
-## 🚀 Cara Menjalankan
+## 🚀 Cara Menjalankan {#cara-menjalankan}
 
 ### Prasyarat
 
@@ -178,7 +178,6 @@ httpx==0.27.0
 
 ## 🔧 Konfigurasi Penting
 
-
 ### Mengganti Model AI Default
 
 Di `static/index.html`, cari:
@@ -229,7 +228,7 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti ke port 8001
 
 ---
 
-## 🌐 Deployment ke Production
+## 🌐 Deployment ke Production {#deployment}
 
 ### Option 1: Railway.app (Rekomendasi - Tanpa Kartu Kredit)
 
@@ -240,6 +239,16 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti ke port 8001
 5. Pilih repository `chatgo`
 6. **Variables** → Tambah `GROQ_API_KEY`
 7. Deploy otomatis! 🎉
+
+### Option 2: Vercel
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. `vercel --prod`
+
+### Option 3: Heroku
+
+1. Buat `Procfile`: `web: uvicorn main:app --host 0.0.0.0 --port $PORT`
+2. Push ke Heroku
 
 ---
 
