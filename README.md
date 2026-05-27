@@ -23,7 +23,7 @@
 
 ---
 
-## 📸 Demo
+## 📸 Demo {#demo}
 
 <table align="center">
   <tr>
