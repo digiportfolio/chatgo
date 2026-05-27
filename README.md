@@ -62,9 +62,7 @@
 | Model | Kode | Kecepatan | Kualitas | Rekomendasi |
 |-------|------|-----------|----------|-------------|
 | **Llama 3.3 70B** | `llama-3.3-70b-versatile` | Medium | ★★★★★ | **Default (Terbaik)** |
-| **Llama 3.1 70B** | `llama-3.1-70b-versatile` | Medium | ★★★★☆ | Alternatif handal |
 | **Llama 3.1 8B** | `llama-3.1-8b-instant` | Sangat Cepat | ★★★☆☆ | Untuk respons cepat |
-| **Gemma 2 9B** | `gemma2-9b-it` | Cepat | ★★★☆☆ | Model dari Google |
 
 > Semua model tersedia via Groq API
 
@@ -77,7 +75,7 @@ graph LR
     A[User Browser] --> B[HTML/CSS/JS Frontend]
     B --> C[Python FastAPI Backend]
     C --> D[Groq API]
-    D --> E[Llama 3 / Gemma AI Models]
+    D --> E[Llama 3 AI Models]
 ```
 
 | Lapisan | Teknologi | Keterangan |
@@ -281,7 +279,7 @@ curl http://localhost:8000/health
 
 | Masalah | Solusi |
 |---------|--------|
-| **Error 400 - Model decommissioned** | Ganti model di dropdown (Llama 3.3 70B atau Llama 3.1 70B) |
+| **Error 400 - Model decommissioned** | Ganti model di dropdown (Llama 3.3 70B atau Llama 3.1 8B) |
 | **API Key invalid** | Cek file `.env` dan restart server |
 | **Port 8000 sudah dipakai** | Ganti port di `main.py` menjadi `port=8001` |
 | **Streaming tidak jalan** | Set `USE_STREAMING = false` di HTML (sementara) |
@@ -291,36 +289,12 @@ curl http://localhost:8000/health
 
 ---
 
-## 📈 Roadmap
-
-- [ ] Voice input (Web Speech API)
-- [ ] Export chat ke PDF / Markdown
-- [ ] Multi-user authentication (Login)
-- [ ] Database PostgreSQL untuk history permanen
-- [ ] Custom system prompt
-- [ ] Temperature slider (kreativitas AI)
-- [ ] Pinned messages / bookmark
-
----
-
-## 🤝 Kontribusi
-
-Pull requests sangat diterima! Untuk perubahan besar:
-
-1. **Fork** repository ini
-2. Buat **branch fitur** (`git checkout -b fitur-keren`)
-3. **Commit** perubahan (`git commit -m 'Tambahkan fitur keren'`)
-4. **Push** ke branch (`git push origin fitur-keren`)
-5. Buka **Pull Request**
-
----
-
 ## 📝 License
 
-**MIT License** - Bebas digunakan untuk belajar, portofolio, dan komersial.
+**MIT License** - Bebas digunakan untuk belajar.
 
 ```
-Copyright (c) 2025 Fadli
+Copyright (c) 2026 Fadli
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -334,8 +308,7 @@ in the Software without restriction...
 **Fadli** (SAYA-FADLI)
 
 - GitHub: [@digiportfolio](https://github.com/digiportfolio)
-- LinkedIn: [linkedin.com/in/fadli](https://linkedin.com/in/fadli) *(opsional)*
-- Portfolio: [fadli.dev](https://fadli.dev) *(opsional)*
+- LinkedIn: [linkedin.com/in/fadli](https://linkedin.com/in/fadli)
 
 ---
 
@@ -364,6 +337,6 @@ in the Software without restriction...
 ---
 
 <p align="center">
-  <b>Dibuat dengan ❤️ untuk portofolio Python Developer</b><br>
-  <sub>© 2025 Fadli - MIT License</sub>
+  <b>Dibuat dengan ❤️ untuk portofolio Backend Developer</b><br>
+  <sub>© 2026 Fadli - MIT License</sub>
 </p>
