@@ -84,7 +84,7 @@ graph LR
 
 ```
 chatgo/
-├── main.py              # Backend FastAPI (endpoint, streaming)
+├── main.py              # Backend Python FastAPI (endpoint, streaming)
 ├── requirements.txt     # Python dependencies
 ├── .env                 # API key (jangan commit ke github!)
 ├── .gitignore           # File yang diabaikan Git
