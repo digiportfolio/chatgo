@@ -103,7 +103,7 @@ chatgo/
 
 ### Prasyarat
 
-| Requirement | Keterangan |
+| Requirements | Keterangan |
 |-------------|------------|
 | Python 3.8+ | [Download Python](https://python.org) |
 | Akun Groq | [Daftar](https://console.groq.com) - tanpa kartu kredit |
@@ -189,49 +189,17 @@ uvicorn.run(app, host="0.0.0.0", port=8001)  # Ganti ke port 8001
 
 ---
 
-## 🎯 Fitur Detail
-
-### 1. Copy Pesan
-- Tombol **"📋 Salin"** berada **di luar bubble pesan AI** (di bawah kanan)
-- Klik untuk menyalin teks ke clipboard
-- Notifikasi "✅ Tersalin!" muncul
-
-### 2. Light/Dark Mode
-- Klik tombol 🌙 di header
-- Preferensi tersimpan di localStorage
-- Mode bertahan setelah refresh
-
-### 3. Chat History
-- Semua percakapan tersimpan otomatis
-- Data tetap ada setelah refresh browser
-- Tombol 🗑️ dengan konfirmasi modal untuk hapus semua chat
-
-### 4. Multiple AI Models
-- Dropdown "Pilih Model AI" di header
-- **Default model: Llama 3.3 70B** (paling pintar)
-
-### 5. Code Highlighting
-- Support Python, HTML, CSS, JavaScript, dan lainnya
-- Syntax highlighting warna-warni di dalam ``` blocks
-
-### 6. Auto-detect API URL
-- Otomatis pakai `localhost:8000` saat develop
-- Otomatis pakai domain production saat deploy
-- **Tidak perlu ganti-ganti file!**
-
----
-
 ## 🌐 Deployment ke Production
 
-### Option 1: Railway.app (Rekomendasi - Tanpa Kartu Kredit)
+### railway.com (Rekomendasi - Tanpa Kartu Kredit)
 
 1. Push kode ke GitHub
-2. Buka [https://railway.app](https://railway.app)
+2. Buka [https://railway.com](https://railway.com)
 3. Login dengan GitHub
 4. **New Project** → **Deploy from GitHub repo**
 5. Pilih repository `chatgo`
 6. **Variables** → Tambah `GROQ_API_KEY`
-7. Deploy otomatis! 🎉
+7. Deploy otomatis!
 
 ---
 
@@ -258,9 +226,7 @@ curl http://localhost:8000/health
   "status": "ok",
   "available_models": [
     "llama-3.3-70b-versatile",
-    "llama-3.1-70b-versatile",
-    "llama-3.1-8b-instant",
-    "gemma2-9b-it"
+    "llama-3.1-8b-instant"
   ]
 }
 ```
@@ -290,7 +256,7 @@ Copyright (c) 2026 Mohammad Fadli Mubarrok
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
+in the Software without restriction.
 ```
 
 ---
@@ -304,14 +270,13 @@ in the Software without restriction...
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Acknowledgements
 
 | Pihak | Kontribusi |
 |-------|------------|
-| **[Groq](https://groq.com)** | API yang cepat (Mixtral, Llama 3, Gemma) |
-| **[FastAPI](https://fastapi.tiangolo.com)** | Framework backend modern Python |
+| **[Groq](https://groq.com)** | API |
+| **[FastAPI](https://fastapi.tiangolo.com)** | Framework Python |
 | **[Meta AI](https://ai.meta.com/llama/)** | Llama 3.3 & Llama 3.1 models |
-| **[Google](https://ai.google.dev/gemma)** | Gemma 2 model |
 | **[Railway](https://railway.app)** | Hosting |
 
 ---
