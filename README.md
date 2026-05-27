@@ -49,7 +49,7 @@
 | 🌙 **Light/Dark Mode** | ✅ | Toggle antara mode terang dan gelap |
 | 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik |
 | 💾 **Chat History** | ✅ | Percakapan tersimpan di localStorage browser |
-| 🔄 **Multiple AI Models** | ✅ | Pilih dari 4 model AI (Llama 3.3 70B, Llama 3.1 70B, Llama 3.1 8B, Gemma 2 9B) |
+| 🔄 **Multiple AI Models** | ✅ | Pilih dari 2 model AI (Llama 3.3 70B dan Llama 3.1 8B) |
 | 📱 **Responsive Design** | ✅ | Bekerja sempurna di hp, tablet, dan desktop |
 | 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk kode |
 | 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan dialog konfirmasi |

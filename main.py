@@ -29,9 +29,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 # Model AI yang tersedia GRATIS
 AVAILABLE_MODELS = [
     "llama-3.3-70b-versatile",   # ✅ Pengganti Mixtral (lebih bagus!)
-    "llama-3.1-70b-versatile",   # ✅ Llama 3.1 70B
     "llama-3.1-8b-instant",      # ✅ Llama 3.1 8B (cepat)
-    "gemma2-9b-it",              # ✅ Masih aktif (Google)
 ]
 
 class ChatRequest(BaseModel):
@@ -103,4 +101,3 @@ if __name__ == "__main__":
     print("🚀 ChatGO berjalan di http://localhost:8000")
     print(f"📋 Model tersedia: {AVAILABLE_MODELS}")
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
