@@ -28,24 +28,24 @@
   </tr>
 </table>
 
-**[🔗 Live Demo - ChatGO di Railway](https://chatgo.up.railway.app)**
+**[🔗 Live Demo ChatGO](https://chatgo.up.railway.app)**
 
 ---
 
 ## ✨ Fitur Unggulan
 
-| Fitur | Status | Deskripsi |
-|:------|:------:|:----------|
-| 💬 **Real-time Chat** | ✅ | Kirim pesan dan dapatkan respons instan dari AI |
-| 🎯 **Streaming Response** | ✅ | Teks muncul huruf per huruf |
-| 🌙 **Light/Dark Mode** | ✅ | Toggle antara mode terang dan gelap |
-| 📋 **Copy Message** | ✅ | Salin pesan AI dengan satu klik |
-| 💾 **Chat History** | ✅ | Percakapan tersimpan di localStorage browser |
-| 🔄 **Multiple AI Models** | ✅ | Pilih dari 2 model AI (Llama 3.3 70B dan Llama 3.1 8B) |
-| 📱 **Responsive Design** | ✅ | Bekerja sempurna di hp, tablet, dan desktop |
-| 🎨 **Code Highlighting** | ✅ | Syntax highlighting untuk kode |
-| 🧹 **Clear Chat** | ✅ | Hapus semua percakapan dengan dialog konfirmasi |
-| ⚡ **Auto-detect API URL** | ✅ | Bisa jalan di localhost dan production tanpa config ulang |
+| Fitur | Deskripsi |
+|:------|:----------|
+| 💬 **Real-time Chat** | Kirim pesan dan dapatkan respons dari AI |
+| 🎯 **Streaming Response** | Teks muncul huruf per huruf |
+| 🌙 **Light/Dark Mode** | Toggle antara mode terang dan gelap |
+| 📋 **Copy Message** | | Salin pesan AI dengan satu klik |
+| 💾 **Chat History** | Percakapan tersimpan di localStorage browser |
+| 🔄 **Multiple AI Models** | Pilih dari 2 model AI (Llama 3.3 70B dan Llama 3.1 8B) |
+| 📱 **Responsive Design** | Bekerja sempurna di mobile, tablet, dan desktop |
+| 🎨 **Code Highlighting** | Syntax highlighting untuk kode |
+| 🧹 **Clear Chat** | Hapus semua percakapan dengan dialog konfirmasi |
+| ⚡ **Auto-detect API URL** | Bisa jalan di localhost dan production tanpa config ulang |
 
 ---
 
