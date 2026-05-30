@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Inisialisasi Groq client (GRATIS!)
+# Inisialisasi Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Model AI yang tersedia GRATIS
@@ -59,7 +59,7 @@ async def chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error dari AI: {str(e)}")
 
-# ============ ENDPOINT DENGAN STREAMING (Lebih keren!) ============
+# ============ ENDPOINT DENGAN STREAMING ============
 @app.post("/chat-stream")
 async def chat_stream(request: ChatRequest):
     async def generate() -> AsyncGenerator[str, None]:

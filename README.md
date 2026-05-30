@@ -294,6 +294,6 @@ in the Software without restriction.
 ---
 
 <p align="center">
-  <b>Dibuat dengan ❤️ untuk portofolio Backend Developer</b><br>
+  <b>Dibuat dengan ❤️ untuk portofolio Data Analyst</b><br>
   <sub>© 2026 Mohammad Fadli Mubarrok - MIT License</sub>
 </p>
