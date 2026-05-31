@@ -32,6 +32,12 @@
 
 ---
 
+## 🎥 Video Demo ChatGO
+
+**[🔗 Video Demo ChatGO](https://youtu.be/PKzZ6JqgOoU?si=_Pu5VLaLI-Mng5wJ)**
+
+---
+
 ## ✨ Fitur Unggulan
 
 | Fitur | Deskripsi |
